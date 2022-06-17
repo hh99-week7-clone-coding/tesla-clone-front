@@ -1,8 +1,18 @@
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import "./App.css";
+
+// import react-query
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+
 function App() {
   return (
-    <div>
+    <QueryClientProvider client={queryClient}>
+      <div>
       // ...
-    </div>
+      </div>
+    </QueryClientProvider>
   );
 }
 
