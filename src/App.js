@@ -12,10 +12,11 @@ import Cart from './pages/cart';
 // import react-query
 import { QueryClient, QueryClientProvider } from 'react-query'
 
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={QueryClient}>
+    <QueryClientProvider client={queryClient}>
       <Routes>
         <Route path = "/" element={<Home/>}/>
         <Route path = "/login" element={<Login/>}/>
