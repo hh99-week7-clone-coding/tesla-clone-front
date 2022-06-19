@@ -1,16 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
-import { useInView } from 'react-intersection-observer';
+import "../pages/style/home.css";
+import { Link } from 'react-router-dom'
 
 const MainBtn = ({btn1, btn2}) => {
 
-    const {ref, inView} = useInView({
-        
-    })
-
   return (
-    <StBtnBox ref={ref}>
-        <StBtn backgroundColor="#3a3d41" color="white">{btn1}</StBtn>
+    <StBtnBox>
+        <StLink to={'/vehicle/detail'}><StBtn backgroundColor="#3a3d41" color="white">{btn1}</StBtn></StLink>
         <StBtn backgroundColor="#e6e6e5" color="#787a7c">{btn2}</StBtn>
     </StBtnBox>
   )
@@ -20,7 +17,14 @@ const StBtnBox = styled.div`
     position: absolute;
     bottom: 100px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    animation : onMountText 2s;
+    animation-fill-mode: forwards;
+    /* display: ${props => props.inView ? "flex" : "none"}; */
+`;
+
+const StLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const StBtn = styled.div`
