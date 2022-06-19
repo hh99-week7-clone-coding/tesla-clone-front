@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react'
 import styled from 'styled-components';
 import { useInView } from "react-intersection-observer";
 import "../pages/style/home.css";
-import { Link } from 'react-router-dom';
 // import components
 import MainBtn from './MainBtn';
 
