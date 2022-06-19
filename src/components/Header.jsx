@@ -65,8 +65,8 @@ const StHeaderBox = styled.div`
     z-index: 100;
 `;
 
-const StLogo = styled.h1`
-    margin: 0px 35px;
+export const StLogo = styled.h1`
+    margin: 20px 35px;
     font-family: 'Logo';
     font-size: 18px;
     letter-spacing: 10px;
