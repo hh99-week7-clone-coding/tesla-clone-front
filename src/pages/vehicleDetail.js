@@ -52,7 +52,7 @@ const StDetailBox = styled.div`
     animation: mounting 1s ease-in-out;
 `;
 
-const StLogo = styled.h1`
+export const StLogo = styled.h1`
     position: fixed;
     top: 3vh;
     left: 2vw;
