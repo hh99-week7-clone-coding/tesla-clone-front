@@ -1,34 +1,27 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import styled from 'styled-components';
-import { useInView } from "react-intersection-observer";
-import "../pages/style/home.css";
-import { Link } from 'react-router-dom';
-// import components
 import MainBtn from './MainBtn';
+import "../pages/style/home.css";
 
 
-const MainImage = forwardRef(({Img, MobileImg, title, text, btn1, btn2}, section2Ref) => {
+const FirstImage = ({Img, MobileImg, title, text, btn1, btn2}) => {
 
-    const { ref, inView } = useInView({
-        threshold: 0.5  
-      });
     
   return (
-    <StContainer ref={section2Ref}>
+    <StContainer>
         <StMainImg Img={Img} MobileImg={MobileImg}>
-            <StImgContent inView={inView}>
+            <StImgContent>
                 <StTitleBox>
                     <StTitle>{title}</StTitle>
                     <StText>{text}</StText>
                 </StTitleBox>
                 <MainBtn btn1={btn1} btn2={btn2}/>
             </StImgContent>
-            <StInViewBox ref={ref}/>
         </StMainImg>
     </StContainer>
     
   )
-})
+}
 
 const StContainer = styled.div`
     width: 100vw;
@@ -45,20 +38,18 @@ const StMainImg = styled.div`
     background-size: cover;
     @media only screen and (max-width: 500px) {
        background-image: url(${props => props.MobileImg});
-       width: 100vw;
-       height: auto;
     }
 `;
 
 const StImgContent = styled.div`
     position: absolute;
-    top: 15vh;
-    display: ${props => props.inView ? "flex" : "none"};
+    top: 10vh;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 70vw;
-    height: 85vh;    
+    width: 70vh;
+    height: 90vh;    
 `;
 
 const StTitleBox = styled.div`
@@ -86,11 +77,4 @@ const StText = styled.span`
     animation-fill-mode: forwards;
 `;
 
-const StInViewBox = styled.div`
-    position: absolute;
-    top: 400px;
-    width: 500px;
-    height: 600px;
-`;
-
-export default MainImage;
+export default FirstImage;

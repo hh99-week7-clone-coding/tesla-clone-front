@@ -43,9 +43,9 @@ const Header = () => {
         </StMenu>
         <StMenuBox width="15vw" minWidth="250px"  onMouseLeave={onSideOut}>
             <StMenuBtn id="0" onMouseEnter={onSideHoverBtn}>Shop</StMenuBtn>
-            <StMenuBtn id="80" onMouseEnter={onSideHoverBtn}>Account</StMenuBtn>
-            <StMenuBtn id="160" onMouseEnter={onSideHoverBtn}>Menu</StMenuBtn>
-            <StMenuHover hover={sideHover} out={sideOut} width="70px"/>
+            <StMenuBtn id="90" onMouseEnter={onSideHoverBtn}>Account</StMenuBtn>
+            <StMenuBtn id="180" onMouseEnter={onSideHoverBtn}>Menu</StMenuBtn>
+            <StMenuHover hover={sideHover} out={sideOut} width="calc(100% / 4)"/>
         </StMenuBox>
         <StSideMenu>Menu</StSideMenu>
     </StHeaderBox>

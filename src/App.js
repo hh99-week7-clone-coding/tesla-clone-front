@@ -9,6 +9,7 @@ import Shop from './pages/shop';
 import Category from './pages/category';
 import ShopDetail from './pages/shopDetail';
 import Cart from './pages/cart';
+import VehicleDetail from './pages/vehicleDetail'
 // import react-query
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -19,6 +20,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Routes>
         <Route path = "/" element={<Home/>}/>
+        <Route path = "/vehicle/detail" element={<VehicleDetail/>}/>
         <Route path = "/login" element={<Login/>}/>
         <Route path = "/signup" element={<Signup/>}/>
         <Route path = "/shop" element={<Shop/>}/>
