@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { vehicle } from "./vehicle";
+import  home  from "./home";
 
 const rootReducer = combineReducers({
-  vehicle
+  home
 });
 
 export default rootReducer;

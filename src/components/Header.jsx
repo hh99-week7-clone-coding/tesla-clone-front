@@ -1,13 +1,20 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { menuOpen } from "../redux/modules/home";
 import styled from "styled-components";
 import "../App.css";
 
 const Header = () => {
 
+    const dispatch = useDispatch();
+
     const [hover, setHover] = useState(0);
     const [sideHover, setSideHover] = useState(0);
     const [out, setOut] = useState(false);
     const [sideOut, setSideOut] = useState(false);
+
+    const isMenuOpened = useSelector(state => state.home.menuOpened)
 
     const onHoverBtn = (event) => {
         setHover(event.target.id);
@@ -19,7 +26,7 @@ const Header = () => {
         setSideOut(false);
     }
 
-    const onOut = (event) => {
+    const onOut = () => {
         setOut(true)
     }
 
@@ -27,9 +34,13 @@ const Header = () => {
         setSideOut(true);
     }
 
+    const onMenuOpen = () => {
+        dispatch(menuOpen())
+    }
+
   return (
     <StHeaderBox>
-        <StLogo>TESLA</StLogo>
+        <StLink to={'/'}><StLogo>TESLA</StLogo></StLink>
         <StMenu>
             <StMenuBox width="700px" minWidth="550px" onMouseLeave={onOut}>
                 <StMenuBtn id="5" onMouseEnter={onHoverBtn}>Model S</StMenuBtn>
@@ -43,14 +54,19 @@ const Header = () => {
         </StMenu>
         <StMenuBox width="15vw" minWidth="250px"  onMouseLeave={onSideOut}>
             <StMenuBtn id="0" onMouseEnter={onSideHoverBtn}>Shop</StMenuBtn>
-            <StMenuBtn id="90" onMouseEnter={onSideHoverBtn}>Account</StMenuBtn>
-            <StMenuBtn id="180" onMouseEnter={onSideHoverBtn}>Menu</StMenuBtn>
+            <StMenuBtn id="90" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>
+            <StMenuBtn id="180" onMouseEnter={onSideHoverBtn} onClick={onMenuOpen}>Menu</StMenuBtn>
             <StMenuHover hover={sideHover} out={sideOut} width="calc(100% / 4)"/>
         </StMenuBox>
-        <StSideMenu>Menu</StSideMenu>
+        <StSideMenu onClick={onMenuOpen}>Menu</StSideMenu>
     </StHeaderBox>
   )
-}
+};
+
+export const StLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+`;
 
 const StHeaderBox = styled.div`
     position: fixed;
@@ -62,7 +78,7 @@ const StHeaderBox = styled.div`
     min-width: 600px;
     height: 40px;
     background-color: transparent;
-    z-index: 100;
+    z-index: 50;
 `;
 
 export const StLogo = styled.h1`
@@ -70,6 +86,9 @@ export const StLogo = styled.h1`
     font-family: 'Logo';
     font-size: 18px;
     letter-spacing: 10px;
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
 const StMenu = styled.div`
@@ -101,8 +120,12 @@ const StMenuBtn = styled.div`
     font-family: "text";
     font-size: 14px;
     font-weight: bold;
+    z-index: 10;
     &:hover{
         cursor: pointer;
+    }
+    @media only screen and (max-width: 1200px) {
+        display: none;
     }
 `;
 
@@ -127,21 +150,20 @@ const StSideMenu = styled.div`
     width: 80px;
     height: 30px;
     margin: 0px 30px;
-    background-color: rgba(0,0,0,0.1);
     border-radius: 10px;
     font-family: "text";
     font-size: 15px;
     letter-spacing: 1px;
-    font-weight: bold;
-    transition: 0.3s ease-in-out;
-    &:hover{
-        cursor: pointer;
-        background-color: rgba(0,0,0,0.2);
-    }
-    @media only screen and (min-width: 1200px) {
+    transition: 0.5s ease-out;
+    font-weight: bold;@media only screen and (min-width: 1200px) {
         display: none;
     }
+    &:hover{
+        background-color: rgba(0,0,0,0.1);
+        width: 100px;
+        height: 30px;
+        cursor: pointer;
+    }
 `;
-
 
 export default Header;

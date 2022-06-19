@@ -1,9 +1,12 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux/es/exports';
+import { menuClose } from '../redux/modules/home';
 // import components
 import Header from '../components/Header';
 import MainImage from '../components/MainImage';
 import FirstImage from '../components/FirstImage';
+import SideMenu from '../components/SideMenu';
 // import images
 import Home1 from '../image/Home1.jfif';
 import Home1Mobile from '../image/Home1-mobile.jfif';
@@ -24,13 +27,14 @@ import downArrow from "../image/down-arrow-png-clipart-716084.png";
 
 const Home = () => {
 
+    const dispatch = useDispatch();
+
   // 스크롤 맨 위로 올리는 top버튼 onClick 이벤트
   const onScrollTopHandler = () => {
     window.scrollTo({top:0, left:0, behavior:'smooth'})
   }
 
   // 스크롤 내림 버튼 
-  
   const section2Ref = useRef();
   const section3Ref = useRef();
   const section4Ref = useRef();
@@ -68,8 +72,18 @@ const Home = () => {
     window.scrollBy({top: section7Top, behavior: 'smooth'})
   }
 
+  // menu 바 열기
+  const IsMenuOpened = useSelector(state => state.home.menuOpened)
+
+  const onMenuClose = () => {
+    dispatch(menuClose());
+  }
+
   return (
     <StContainer>
+        <StSideMenuBackground onClick={onMenuClose} IsMenuOpened={IsMenuOpened}>
+          <SideMenu/>
+        </StSideMenuBackground>
         <StBanner>
           <span>Read Tesla's 2021 Impact Report</span>
         </StBanner>
@@ -111,6 +125,22 @@ const StBanner = styled.div`
   font-size: 15px;
   text-decoration: underline;
   z-index: 100;
+`;
+
+const StSideMenuBackground = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: ${props => props.IsMenuOpened ? "flex" : "none"};
+    align-items: center;
+    justify-content: flex-end;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 101;
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
 const StScrollTopBtn = styled.div`
