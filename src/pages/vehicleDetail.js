@@ -5,6 +5,7 @@ import VehicleDetailTextBox from '../components/VehicleDetailTextBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { StSpan, StInfoText } from "../components/VehicleDetailTextBox";
+import { StLink } from "../components/Header";
 import VehicleDetailModal from '../components/VehicleDetailModal';
 import "./style/vehicleDetail.css";
 
@@ -25,7 +26,7 @@ const VehicleDetail = () => {
         <StModalBackground onClick={onModalClose} modalOpen={modalOpen}>
             <VehicleDetailModal/>
         </StModalBackground>
-        <StLogo>TESLA</StLogo>
+        <StLink to={'/'}><StLogo>TESLA</StLogo></StLink>
         <StDetailBox>
             <ImgSlide/>
             <VehicleDetailTextBox/>
@@ -48,6 +49,7 @@ const StDetailBox = styled.div`
     justify-content: flex-end;
     margin: 0px auto;
     width: 95vw;
+    animation: mounting 1s ease-in-out;
 `;
 
 const StLogo = styled.h1`
@@ -57,6 +59,9 @@ const StLogo = styled.h1`
     font-family: 'Logo';
     font-size: 18px;
     letter-spacing: 10px;
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
 const StModalBtn = styled.div`
@@ -86,7 +91,7 @@ const StIconBox = styled.div`
     box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
 `;
 
-const StModalBackground = styled.div`
+export const StModalBackground = styled.div`
     position: fixed;
     top: 0;
     left: 0;
