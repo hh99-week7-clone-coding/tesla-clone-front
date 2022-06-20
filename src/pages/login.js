@@ -53,7 +53,7 @@ export const StText = styled.span`
   font-size: 15px;
 `;
 
-export const StInput = styled.input`
+const StInput = styled.input`
   width: 300px;
   height: 20px;
   padding: 10px 20px;
@@ -74,7 +74,7 @@ export const StBtn = styled.button`
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
-  margin: 0px auto;
+  margin: 20px auto;
   background-color: #3d69e1;
   color: white;
   font-family: "text";
