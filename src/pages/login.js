@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { StLogo } from './vehicleDetail';
+import { StLogo, StLink } from '../components/Styles';
 
 const Login = () => {
   return (
@@ -8,8 +8,8 @@ const Login = () => {
       <StLogo>TESLA</StLogo>
       <StLoginBox>
         <StTitle>Sign In</StTitle>
-        <StText>Email Address</StText>
-        <StInput type="email" required/>
+        <StText>ID</StText>
+        <StInput type="text" required/>
         <StBtn>NEXT</StBtn>
         <StSpanBox>
           <span>Forgot email?</span>
@@ -21,14 +21,13 @@ const Login = () => {
           <StText>OR</StText>
           <StHr/>
         </StHrBox>
-        
-        <SignUpBtn>CREATE ACCOUNT</SignUpBtn>
+        <StLink to={'/signup'}><SignUpBtn>CREATE ACCOUNT</SignUpBtn></StLink>
       </StLoginBox>
     </StLoginContainer>
   )
 }
 
-const StLoginContainer = styled.div`
+export const StLoginContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -44,17 +43,17 @@ const StLoginBox = styled.form`
   margin-top: 100px;
 `;
 
-const StTitle = styled.h1`
+export const StTitle = styled.h1`
   font-family: "text";
 `;
 
-const StText = styled.span`
+export const StText = styled.span`
   font-family: "text";
   color: rgba(0,0,0,0.7);
   font-size: 15px;
 `;
 
-const StInput = styled.input`
+export const StInput = styled.input`
   width: 300px;
   height: 20px;
   padding: 10px 20px;
@@ -69,7 +68,7 @@ const StInput = styled.input`
   }
 `;
 
-const StBtn = styled.button`
+export const StBtn = styled.button`
   width: 350px;
   height: 42px;
   padding: 10px 20px;
@@ -97,26 +96,26 @@ const StSpanBox = styled.div`
   font-family: "text";
 `;
 
-const StHrBox = styled.div`
+export const StHrBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 350px;
-  margin: 0 auto;
+  margin: 20px auto;
 `;
 
-const StHr = styled.hr`
+export const StHr = styled.hr`
   width: 130px;
   color: #e2e4e4;
 `;
 
-const SignUpBtn = styled.button`
+export const SignUpBtn = styled.button`
   width: 350px;
   height: 42px;
   padding: 10px 20px;
   border-radius: 20px;
   border: 3px solid black;
-  margin: 0px auto;
+  margin: 0px 27px;
   background-color: white;
   color: black;
   font-family: "text";

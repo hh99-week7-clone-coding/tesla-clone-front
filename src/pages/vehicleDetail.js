@@ -5,7 +5,7 @@ import VehicleDetailTextBox from '../components/VehicleDetailTextBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { StSpan, StInfoText } from "../components/VehicleDetailTextBox";
-import { StLink } from "../components/Header";
+import { StLink, StLogo } from "../components/Styles";
 import VehicleDetailModal from '../components/VehicleDetailModal';
 import "./style/vehicleDetail.css";
 
@@ -50,18 +50,6 @@ const StDetailBox = styled.div`
     margin: 0px auto;
     width: 95vw;
     animation: mounting 1s ease-in-out;
-`;
-
-export const StLogo = styled.h1`
-    position: fixed;
-    top: 3vh;
-    left: 2vw;
-    font-family: 'Logo';
-    font-size: 18px;
-    letter-spacing: 10px;
-    &:hover{
-        cursor: pointer;
-    }
 `;
 
 const StModalBtn = styled.div`
