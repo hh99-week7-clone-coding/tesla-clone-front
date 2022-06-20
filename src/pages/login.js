@@ -1,16 +1,36 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useForm } from "react-hook-form";
 import { StLogo, StLink } from '../components/Styles';
+// import Hook
+import UseLogin from "../Hooks/UseLogin";
 
 const Login = () => {
+
+  const { register, handleSubmit, formState : {error}} = useForm({
+    defaultValues : {
+      "username" : "",
+      "password" : ""
+    }
+  });
+
+  const { mutate, isLoading, isError } = UseLogin();
+
+  const onSubmit = data => {
+    mutate(data)
+  }
+
+
   return (
     <StLoginContainer>
       <StLogo>TESLA</StLogo>
-      <StLoginBox>
+      <StLoginBox onSubmit={handleSubmit(onSubmit)}>
         <StTitle>Sign In</StTitle>
-        <StText>ID</StText>
-        <StInput type="text" required/>
-        <StBtn>NEXT</StBtn>
+        <StText>Email Address</StText>
+        <StInput type="text"{...register("username", { required : true})}/>
+        <StText>Password</StText>
+        <StInput type="password" {...register("password", { required : true})}/>
+        { isLoading ? <StLoadingBtn>Loading..</StLoadingBtn> : <StBtn type="submit">NEXT</StBtn>}
         <StSpanBox>
           <span>Forgot email?</span>
           <span>|</span>
@@ -39,7 +59,7 @@ const StLoginBox = styled.form`
   flex-direction: column;
   justify-content: space-evenly;
   width: 400px;
-  height: 400px;
+  height: 600px;
   margin-top: 100px;
 `;
 
@@ -84,6 +104,20 @@ export const StBtn = styled.button`
     cursor: pointer;
     background-color: #3457b2;
   }
+`;
+
+export const StLoadingBtn = styled.button`
+  width: 350px;
+  height: 42px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  margin: 20px auto;
+  background-color: #ddd;
+  color: white;
+  font-family: "text";
+  font-size: 12px;
+  transition: 0.3s ease-in-out;
 `;
 
 const StSpanBox = styled.div`

@@ -3,13 +3,18 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+// import image
+import model3_1 from "../image/detail/model3/detail-model3-1.jfif";
+import model3_2 from "../image/detail/model3/detail-model3-2.jfif";
+import model3_3 from "../image/detail/model3/detail-model3-3.jfif";
+import model3_4 from "../image/detail/model3/detail-model3-4.jfif"
 
 const ImgSlide = () => {
 
-    const Img1 = "https://static-assets.tesla.com/configurator/compositor?&options=$MT324,$PPSW,$W41B,$IPB1&view=STUD_FRONT34&model=m3&size=1920&bkba_opt=2&version=v0028d202206170343&crop=0,0,0,0&version=v0028d202206170343"
-    const Img2 = "https://static-assets.tesla.com/configurator/compositor?&options=$MT324,$PPSW,$W41B,$IPB1&view=STUD_SIDEVIEW&model=m3&size=1920&bkba_opt=2&version=v0028d202206170343&crop=0,0,0,0&version=v0028d202206170343"
-    const Img3 = "https://static-assets.tesla.com/configurator/compositor?&options=$MT324,$PPSW,$W41B,$IPB1&view=STUD_REAR34&model=m3&size=1920&bkba_opt=2&version=v0028d202206170343&crop=0,0,0,0&version=v0028d202206170343" 
-    const Img4 = "https://static-assets.tesla.com/configurator/compositor?&options=$IPB1,$PPSW,$MT324&view=STUD_INTERIOR&model=m3&size=1441&bkba_opt=2&version=v0028d202206170343&crop=0,0,0,0&version=v0028d202206170343"
+    const Img1 = model3_1
+    const Img2 = model3_2
+    const Img3 = model3_3
+    const Img4 = model3_4
 
     const [imgNum, setImgNum] = useState(0);
 

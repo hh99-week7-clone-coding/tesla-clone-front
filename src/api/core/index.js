@@ -3,7 +3,7 @@ import { getCookie } from '../../Cookie';
 
 // 1. Axios instance생성
 const api = axios.create({
-    baseURL: ""
+    baseURL: "http://13.209.88.160:8080"
 })
 
 // 2. request interceptor

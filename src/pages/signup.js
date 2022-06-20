@@ -1,22 +1,44 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Link } from "react-router-dom"
-import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom"
+import { useForm, useFormState } from "react-hook-form";
 // import Styled-components
 import { StLogo, StLink } from '../components/Styles';
-import { StLoginContainer, StTitle, StText, StBtn, StHrBox, StHr, SignUpBtn } from './login';
+import { StLoginContainer, StTitle, StText, StHrBox, StHr, SignUpBtn } from './login';
 // import Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
-// import Axios Instance
-import apis from "../api/main";
+// import Hook
+import UseSignup from '../Hooks/UseSignup';
+
 
 const Signup = () => {
 
-  const { register, handleSubmit, watch, formState: {errors}} = useForm();
-  const onSubmit = data => console.log(data);
-  // const onSubmit = data => apis.postUser(data);
+  const navigate = useNavigate();
+
+  const { register, handleSubmit, formState: {errors, isValid}, control} = useForm({
+    mode: "onChange",
+    defaultValues : {
+      "nation": "",
+      "firstName" : "",
+      "lastName" : "",
+      "username" : "",
+      "password" : ""
+    }
+  });
+
+  const { dirtyFields } = useFormState({
+    control
+  });
+
+  const { mutate } = UseSignup();
+
+  const onSubmit = data => {
+    mutate(data)
+    alert("회원가입 완료!");
+    navigate('/login');
+  };
 
   return (
     <StLoginContainer>
@@ -32,7 +54,7 @@ const Signup = () => {
         </StSelect>
         <StText>First Name</StText>
         <StInput type="text" {...register("firstName", { required: true, maxLength: 20 })}/>
-          { errors.firstName?.type === "required" ? 
+          { errors.firstName?.type === "required" || dirtyFields.firstName === undefined ? 
             <StAlertBox>
               <FontAwesomeIcon icon={faTriangleExclamation} style={{color:"tomato"}}/>
               <StAlert color="tomato">First Name is required.</StAlert>
@@ -46,7 +68,7 @@ const Signup = () => {
           </StAlertBox>
            : null
           }
-          {errors.firstName?.type === undefined ? 
+          {errors.firstName?.type === undefined && dirtyFields.firstName === true ? 
             <StAlertBox>
               <FontAwesomeIcon icon={faCircleCheck} style={{color:"green"}}/>
               <StAlert color="green">Nice First name!</StAlert>
@@ -54,7 +76,7 @@ const Signup = () => {
           }
         <StText>Last Name</StText>
         <StInput type="text" {...register("lastName", { required: true, maxLength: 20 })}/>
-          { errors.lastName?.type === "required" ? 
+          { errors.lastName?.type === "required" || dirtyFields.lastName === undefined ? 
               <StAlertBox>
                 <FontAwesomeIcon icon={faTriangleExclamation} style={{color:"tomato"}}/>
                 <StAlert color="tomato">Last Name is required.</StAlert>
@@ -68,29 +90,29 @@ const Signup = () => {
             </StAlertBox>
             : null
             }
-            {errors.lastName?.type === undefined ? 
+            {errors.lastName?.type === undefined && dirtyFields.lastName === true ? 
               <StAlertBox>
                 <FontAwesomeIcon icon={faCircleCheck} style={{color:"green"}}/>
                 <StAlert color="green">Nice Last name!</StAlert>
               </StAlertBox> : null
             }
         <StText>Email Address</StText>
-        <StInput type="text" {...register("userName", { required: true, pattern: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i})}/>
-          { errors.userName?.type === "required" ? 
+        <StInput type="text" {...register("username", { required: true, pattern: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i})}/>
+          { errors.username?.type === "required" || dirtyFields.username === undefined ? 
                 <StAlertBox>
                   <FontAwesomeIcon icon={faTriangleExclamation} style={{color:"tomato"}}/>
                   <StAlert color="tomato">Email Address is required.</StAlert>
                 </StAlertBox>
                 : null
               }
-              { errors.userName?.type === "pattern" ? 
+              { errors.username?.type === "pattern" ? 
               <StAlertBox>
                 <FontAwesomeIcon icon={faTriangleExclamation} style={{color:"tomato"}}/>
                 <StAlert color="tomato">Please enter Email Address.</StAlert>
               </StAlertBox>
               : null
               }
-              {errors.userName?.type === undefined ? 
+              {errors.username?.type === undefined && dirtyFields.username === true ? 
                 <StAlertBox>
                   <FontAwesomeIcon icon={faCircleCheck} style={{color:"green"}}/>
                   <StAlert color="green">Nice Email Address!</StAlert>
@@ -98,7 +120,7 @@ const Signup = () => {
               }
         <StText>Password</StText>
         <StInput type="password" {...register("password", { required: true, minLength: 8, maxLength: 20, pattern: /^(?=.*[0-9])(?=.*[a-zA-z]).{8,20}$/})}/>
-        { errors.password?.type === "required" ? 
+        { errors.password?.type === "required" ||dirtyFields.password === undefined ? 
                 <StAlertBox>
                   <FontAwesomeIcon icon={faTriangleExclamation} style={{color:"tomato"}}/>
                   <StAlert color="tomato">Password is required.</StAlert>
@@ -126,7 +148,7 @@ const Signup = () => {
               </StAlertBox>
               : null
               }
-              {errors.password?.type === undefined ? 
+              {errors.password?.type === undefined && dirtyFields.password === true ? 
                 <StAlertBox>
                   <FontAwesomeIcon icon={faCircleCheck} style={{color:"green"}}/>
                   <StAlert color="green">Nice password!</StAlert>
@@ -136,7 +158,7 @@ const Signup = () => {
         <StHrBox>
           <StHr/><StText>OR</StText><StHr/>
         </StHrBox>
-        <StLink to={'/login'}><SignUpBtn type="submit">SIGN IN</SignUpBtn></StLink>
+        <StLink to={'/login'}><SignUpBtn type="submit" disabled={!isValid}>SIGN IN</SignUpBtn></StLink>
       </StSignupBox>
     </StLoginContainer>
   )
@@ -147,8 +169,8 @@ const StSignupBox = styled.form`
   flex-direction: column;
   justify-content: space-evenly;
   width: 400px;
-  height: 800px;
-  margin-top: 100px;
+  height: 850px;
+  margin-top: 80px;
 `;
 
 const StSelect = styled.select`
@@ -200,6 +222,24 @@ const StAlert = styled.span`
   font-size: 13px;
   margin-left: 10px;
   transition: 0.3s ease-in-out;
+`;
+
+const StBtn = styled.button`
+  width: 350px;
+  height: 42px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  margin: 20px auto;
+  background-color: #3d69e1;
+  color: white;
+  font-family: "text";
+  font-size: 12px;
+  transition: 0.3s ease-in-out;
+  &:hover{
+    cursor: pointer;
+    background-color: #3457b2;
+  }
 `;
 
 export default Signup;
