@@ -53,7 +53,7 @@ const Header = () => {
             </StMenuBox>
         </StMenu>
         <StMenuBox width="15vw" minWidth="250px"  onMouseLeave={onSideOut}>
-            <StMenuBtn id="0" onMouseEnter={onSideHoverBtn}>Shop</StMenuBtn>
+            <StMenuBtn id="0" onMouseEnter={onSideHoverBtn}><StLink to={'/shop'}>Shop</StLink></StMenuBtn>
             <StMenuBtn id="90" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>
             <StMenuBtn id="180" onMouseEnter={onSideHoverBtn} onClick={onMenuOpen}>Menu</StMenuBtn>
             <StMenuHover hover={sideHover} out={sideOut} width="calc(100% / 4)"/>
