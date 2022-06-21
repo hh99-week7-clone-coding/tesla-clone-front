@@ -172,4 +172,5 @@ const StNext = styled.img`
     }
 `;
 
+
 export default Home;

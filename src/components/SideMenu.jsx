@@ -46,4 +46,6 @@ const StMenuText = styled.div`
     }
 `;
 
+
 export default SideMenu;
+
