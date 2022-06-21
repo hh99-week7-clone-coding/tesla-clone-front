@@ -87,7 +87,7 @@ const Home = () => {
         <StBanner>
           <span>Read Tesla's 2021 Impact Report</span>
         </StBanner>
-        <Header/> 
+        <Header top="60px"/> 
         <FirstImage Img={Home1} MobileImg={Home1Mobile} title="Model 3" text="Order Online for Touchless Delivery" btn1="CUSTOM ORDER" btn2="EXISTING INVENTORY"/>
         <StNext src={downArrow} onClick={onClickSection2} bottom="2vh"/>
         <MainImage ref={section2Ref} Img={Home2} MobileImg={Home2Mobile} title="Model Y" text="Order Online for Touchless Delivery" btn1="CUSTOM ORDER" btn2="EXISTING INVENTORY"/>

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import MainBtn from './MainBtn';
 import "../pages/style/home.css";
+import { StTitle, StContainer } from './Styles';
 
 
 const FirstImage = ({Img, MobileImg, title, text, btn1, btn2}) => {
@@ -22,11 +23,6 @@ const FirstImage = ({Img, MobileImg, title, text, btn1, btn2}) => {
     
   )
 }
-
-const StContainer = styled.div`
-    width: 100vw;
-    text-align: center;
-`;
 
 const StMainImg = styled.div`
     position: relative;
@@ -59,15 +55,6 @@ const StTitleBox = styled.div`
     align-items: center;
     height: 200px;
     width: 500px;
-`;
-
-const StTitle = styled.h1`
-    font-family: text;
-    font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 10px;
-    animation : onMountTitle 1s;
-    animation-fill-mode: forwards;
 `;
 
 const StText = styled.span`
