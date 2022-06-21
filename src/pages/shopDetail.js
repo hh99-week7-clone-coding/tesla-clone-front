@@ -4,8 +4,6 @@ import Detail from '../components/Detail/Detail';
 
 const ShopDetail = () => {
 
- 
-
 
   return (
     <>

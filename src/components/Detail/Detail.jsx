@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Styled from 'styled-components';
 
 const Detail = ( { url1, url2, title, cost, desc } ) => {
 
 
-    
 
     return (
         <>
             <Wrap>
-                <StSlideWrapper>
-                    <StInner>
-                        <StImg 
-                        alt={title}
-                        src={url1}/>
-                    </StInner>
-                    <StInner>
-                        <StImg
-                        alt={title}
-                        src={url2}/>
-                    </StInner>
-                    <StBtnWrap>
-                        <StBtn1>PrevButton</StBtn1>
-                        <StBtn2>NextButton</StBtn2>
-                    </StBtnWrap>
-                </StSlideWrapper>
+                <StSlideBox>
+                    <StSlideWrapper>
+                        <StSlideList>
+                            <StInner>
+                                <StImg 
+                                alt={title}
+                                src={url1}/>
+                            </StInner>
+                            <StInner>
+                                <StImg
+                                alt={title}
+                                src={url2}/>
+                            </StInner>
+                        </StSlideList>
+                        <StBtnWrap>
+                            <StBtn1>PrevButton</StBtn1>
+                            <StBtn2>NextButton</StBtn2>
+                        </StBtnWrap>
+                    </StSlideWrapper>
+                </StSlideBox>
                 <StPruductContainer>
                     <StH2>{title}</StH2>
                 </StPruductContainer>
@@ -57,14 +60,28 @@ const Wrap = Styled.div`
 `;
 
 
+const StSlideBox = Styled.div`
+    position: relative;
+    width: 500px;
+    
+    
+`;
+
 const StSlideWrapper = Styled.div`
     width: 200vw;
+    transition: all 300ms ease 0s;
     
+    
+`;
+
+const StSlideList = Styled.div`
+    width: 100vw;
 `;
 
 const StInner = Styled.div`
   width: 50vw;
   float: left;
+  display: table;
 `;
 
 const StImg = Styled.img`
