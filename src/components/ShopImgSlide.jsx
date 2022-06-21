@@ -24,6 +24,10 @@ const StImgSlideContainer = styled.div`
     height: 100vh;
 `;
 
+const StTitle = styled.div`
+
+`;
+
 const StImg = styled.img`
     width: 100vw;
     height: 100vh;
