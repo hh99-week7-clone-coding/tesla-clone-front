@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-import { StLink } from '../components/Styles';
+import { StLink } from './Header';
 import "../pages/style/home.css";
 
 const SideMenu = () => {
@@ -46,4 +46,6 @@ const StMenuText = styled.div`
     }
 `;
 
+
 export default SideMenu;
+

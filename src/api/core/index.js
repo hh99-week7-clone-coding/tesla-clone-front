@@ -1,5 +1,6 @@
 import axios from "axios";
-import { getCookie } from '../../Cookie';
+import { setCookie, getCookie } from '../../Cookie';
+
 
 // 1. Axios instance생성
 const api = axios.create({
@@ -21,6 +22,7 @@ api.interceptors.request.use(
 // 3. response interceptor
 api.interceptors.response.use(
     response => {
+        setCookie("token", response.headers.authorization)
         return response;
     },
     error => {
