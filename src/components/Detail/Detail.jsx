@@ -1,33 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styled from 'styled-components';
 
 const Detail = ( { url1, url2, title, cost, desc } ) => {
 
 
+    const [ number , setNumber ] = useState(0);
+    const onIncrease = () => {
+        setNumber(number + 1);
+    }
+
+    const onDecrease = () => {
+        setNumber(number - 1);
+    }
 
     return (
         <>
             <Wrap>
-                <StSlideBox>
-                    <StSlideWrapper>
-                        <StSlideList>
-                            <StInner>
-                                <StImg 
-                                alt={title}
-                                src={url1}/>
-                            </StInner>
-                            <StInner>
-                                <StImg
-                                alt={title}
-                                src={url2}/>
-                            </StInner>
-                        </StSlideList>
-                        <StBtnWrap>
-                            <StBtn1>PrevButton</StBtn1>
-                            <StBtn2>NextButton</StBtn2>
-                        </StBtnWrap>
-                    </StSlideWrapper>
-                </StSlideBox>
                 <StPruductContainer>
                     <StH2>{title}</StH2>
                 </StPruductContainer>
@@ -37,9 +25,13 @@ const Detail = ( { url1, url2, title, cost, desc } ) => {
                 <StPruductContainer>
                     <StP2>Quantity</StP2>
                     <StSmallBtnWrap>
-                        <StPlusMinusBtn>-</StPlusMinusBtn>
-                        <StCount>1</StCount>
-                        <StPlusMinusBtn>+</StPlusMinusBtn>
+                        <StPlusMinusBtn onClick={()=>{
+                            onDecrease();
+                        }}>-</StPlusMinusBtn>
+                        <StCount>{number}</StCount>
+                        <StPlusMinusBtn onClick={()=>{
+                            onIncrease();
+                        }}>+</StPlusMinusBtn>
                         <StAddBtn>
                         Add To Cart
                         </StAddBtn>
@@ -57,54 +49,6 @@ const Detail = ( { url1, url2, title, cost, desc } ) => {
 const Wrap = Styled.div`
     margin-top: 150px;
     position: relative;
-`;
-
-
-const StSlideBox = Styled.div`
-    position: relative;
-    width: 500px;
-    
-    
-`;
-
-const StSlideWrapper = Styled.div`
-    width: 200vw;
-    transition: all 300ms ease 0s;
-    
-    
-`;
-
-const StSlideList = Styled.div`
-    width: 100vw;
-`;
-
-const StInner = Styled.div`
-  width: 50vw;
-  float: left;
-  display: table;
-`;
-
-const StImg = Styled.img`
-  width: 100%;
-`;
-
-const StBtnWrap = Styled.div`
-  display: flex;
-  justify-content: start;
-  font-family: "text";
-`;
-
-const StBtn1 = Styled.div`
-  width: 200px;
-  height: 50px;
-  background-color: green;
-  font-family: "text";
-`;
-const StBtn2 = Styled.div`
-  width: 200px;
-  height: 50px;
-  background-color: green;
-  font-family: "text";
 `;
 
 
