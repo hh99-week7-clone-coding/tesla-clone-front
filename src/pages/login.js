@@ -14,10 +14,20 @@ const Login = () => {
     }
   });
 
+<<<<<<< HEAD
   const { mutate, isLoading } = UseLogin();
 
   const onSubmit = data => {
     mutate(data)
+=======
+
+  const { mutate, isLoading, mutateAsync } = UseLogin();
+
+  const onSubmit = data => {
+    mutate(data)
+    console.log(mutateAsync);
+
+>>>>>>> 935f801a768a846f742260f4cd56e07307778613
   }
 
 

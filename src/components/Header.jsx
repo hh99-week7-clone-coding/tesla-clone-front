@@ -89,6 +89,7 @@ export const StLogo = styled.h1`
     &:hover{
         cursor: pointer;
     }
+
 `;
 
 const StMenu = styled.div`
@@ -165,5 +166,6 @@ const StSideMenu = styled.div`
         cursor: pointer;
     }
 `;
+
 
 export default Header;

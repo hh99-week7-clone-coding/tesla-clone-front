@@ -1,6 +1,7 @@
 import axios from "axios";
 import { setCookie, getCookie } from '../../Cookie';
 
+
 // 1. Axios instance생성
 const api = axios.create({
     baseURL: "http://13.209.88.160:8080"

@@ -75,10 +75,18 @@ const StImgSlideContainer = styled.div`
     transform : translate(${props => props.img}vw);
 `;
 
+<<<<<<< HEAD
 const StImg = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-end;
+=======
+const StTitle = styled.div`
+
+`;
+
+const StImg = styled.img`
+>>>>>>> 935f801a768a846f742260f4cd56e07307778613
     width: 100vw;
     height: 100vh;
     background-image: url(${props => props.src});
