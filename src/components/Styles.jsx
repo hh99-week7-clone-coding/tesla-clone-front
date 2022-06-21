@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export const StLink = styled(Link)`
     text-decoration: none;
+    color: white;
 `;
 
 export const StLogo = styled.h1`

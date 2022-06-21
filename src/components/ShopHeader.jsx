@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import "../App.css";
+import { StLink } from "./Styles";
 // import Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +10,7 @@ const ShopHeader = () => {
   return (
     <StHeaderBox>
         <StMenuBox width="250px">
-            <StLogo>TESLA</StLogo>
+            <StLogo><StLink to={'/'}>TESLA</StLink></StLogo>
             <StSpan>|</StSpan>
             <StMenuBtn>
                 <StSpan>Shop</StSpan>

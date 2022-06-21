@@ -52,10 +52,10 @@ const Header = () => {
                 <StMenuHover hover={hover} out={out} width="100px"/>
             </StMenuBox>
         </StMenu>
-        <StMenuBox width="15vw" minWidth="250px"  onMouseLeave={onSideOut}>
+        <StMenuBox width="17vw" minWidth="250px"  onMouseLeave={onSideOut}>
             <StMenuBtn id="0" onMouseEnter={onSideHoverBtn}><StLink to={'/shop'}>Shop</StLink></StMenuBtn>
-            <StMenuBtn id="90" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>
-            <StMenuBtn id="180" onMouseEnter={onSideHoverBtn} onClick={onMenuOpen}>Menu</StMenuBtn>
+            <StMenuBtn id="100" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>
+            <StMenuBtn id="200" onMouseEnter={onSideHoverBtn} onClick={onMenuOpen}>Menu</StMenuBtn>
             <StMenuHover hover={sideHover} out={sideOut} width="calc(100% / 4)"/>
         </StMenuBox>
         <StSideMenu onClick={onMenuOpen}>Menu</StSideMenu>
@@ -120,7 +120,7 @@ const StMenuBtn = styled.div`
     font-family: "text";
     font-size: 14px;
     font-weight: bold;
-    z-index: 10;
+    z-index: 100;
     &:hover{
         cursor: pointer;
     }
