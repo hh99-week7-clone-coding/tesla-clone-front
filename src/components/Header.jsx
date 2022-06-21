@@ -5,7 +5,7 @@ import { menuOpen } from "../redux/modules/home";
 import styled from "styled-components";
 import "../App.css";
 
-const Header = () => {
+const Header = ({top}) => {
 
     const dispatch = useDispatch();
 
@@ -39,23 +39,20 @@ const Header = () => {
     }
 
   return (
-    <StHeaderBox>
+    <StHeaderBox top={top}>
         <StLink to={'/'}><StLogo>TESLA</StLogo></StLink>
-        <StMenu>
-            <StMenuBox width="700px" minWidth="550px" onMouseLeave={onOut}>
-                <StMenuBtn id="5" onMouseEnter={onHoverBtn}>Model S</StMenuBtn>
-                <StMenuBtn id="120" onMouseEnter={onHoverBtn}>Model 3</StMenuBtn>
-                <StMenuBtn id="235" onMouseEnter={onHoverBtn}>Model X</StMenuBtn>
-                <StMenuBtn id="350" onMouseEnter={onHoverBtn}>Model Y</StMenuBtn>
-                <StMenuBtn id="465" onMouseEnter={onHoverBtn}>Solar Roof</StMenuBtn>
-                <StMenuBtn id="580" onMouseEnter={onHoverBtn}>Solar Panels</StMenuBtn>
-                <StMenuHover hover={hover} out={out} width="100px"/>
-            </StMenuBox>
-        </StMenu>
-        <StMenuBox width="17vw" minWidth="250px"  onMouseLeave={onSideOut}>
+        <StMenuBox width="30vw" minWidth="400px" onMouseLeave={onOut}>
+            <StMenuBtn id="5" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/modelS'}>Model S</StLink></StMenuBtn>
+            <StMenuBtn id="115" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model3'}>Model 3</StLink></StMenuBtn>
+            <StMenuBtn id="230" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/modelX'}>Model X</StLink></StMenuBtn>
+            <StMenuBtn id="340" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/modelY'}>Model Y</StLink></StMenuBtn>
+            <StMenuBtn id="455" onMouseEnter={onHoverBtn}>About Us</StMenuBtn>
+            <StMenuHover hover={hover} out={out} width="100px"/>
+        </StMenuBox>
+        <StMenuBox width="13vw" minWidth="250px"  onMouseLeave={onSideOut}>
             <StMenuBtn id="0" onMouseEnter={onSideHoverBtn}><StLink to={'/shop'}>Shop</StLink></StMenuBtn>
-            <StMenuBtn id="100" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>
-            <StMenuBtn id="200" onMouseEnter={onSideHoverBtn} onClick={onMenuOpen}>Menu</StMenuBtn>
+            <StMenuBtn id="110" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>
+            <StMenuBtn id="220" onMouseEnter={onSideHoverBtn} onClick={onMenuOpen}>Menu</StMenuBtn>
             <StMenuHover hover={sideHover} out={sideOut} width="calc(100% / 4)"/>
         </StMenuBox>
         <StSideMenu onClick={onMenuOpen}>Menu</StSideMenu>
@@ -69,8 +66,11 @@ export const StLink = styled(Link)`
 `;
 
 const StHeaderBox = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: fixed;
-    top: 60px;
+    top: ${props => props.top};
     left: 0;
     display: flex;
     align-items: center;
@@ -89,14 +89,6 @@ export const StLogo = styled.h1`
     &:hover{
         cursor: pointer;
     }
-
-`;
-
-const StMenu = styled.div`
-    display: flex;
-    justify-content: center;
-    width: 80vw;
-    height: 60px;
 `;
 
 const StMenuBox = styled.div`
@@ -107,6 +99,7 @@ const StMenuBox = styled.div`
     width: ${props => props.width};
     min-width: ${props => props.minWidth};
     height: 60px;
+    z-index: 100;
     @media only screen and (max-width: 1200px) {
         display: none;
     }
@@ -166,6 +159,4 @@ const StSideMenu = styled.div`
         cursor: pointer;
     }
 `;
-
-
 export default Header;

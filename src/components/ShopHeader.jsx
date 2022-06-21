@@ -27,7 +27,7 @@ const ShopHeader = () => {
                 <StSpan>Apparel</StSpan>
             </StMenuBtn>
             <StMenuBtn>
-                <StSpan>LifeStyle</StSpan>
+                <StSpan>Lifestyle</StSpan>
             </StMenuBtn>
         </StMenuBox>
         <StMenuBox width="150px">

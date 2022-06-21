@@ -10,6 +10,10 @@ import Category1 from './pages/category1';
 import ShopDetail from './pages/shopDetail';
 import Cart from './pages/cart';
 import VehicleDetail from './pages/vehicleDetail'
+import ModelS from './pages/vehicleInfo/modelS';
+import Model3 from './pages/vehicleInfo/model3';
+import ModelX from './pages/vehicleInfo/modelX';
+import ModelY from './pages/vehicleInfo/modelY';
 // import react-query
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -26,7 +30,10 @@ function App() {
         <Route path = "/shop" element={<Shop/>}/>
         <Route path = "/shop/category/charging" element={<Category1/>}/>
         <Route path = "/shop/item/itemName" element={<ShopDetail/>}/>
-        {/* :itemName 추가 */}
+        <Route path = "/vehicle/info/modelS" element={<ModelS/>}/>
+        <Route path = "/vehicle/info/model3" element={<Model3/>}/>
+        <Route path = "/vehicle/info/modelX" element={<ModelX/>}/>
+        <Route path = "/vehicle/info/modelY" element={<ModelY/>}/>
         <Route path = "/shop/cart/:id" element={<Cart/>}/>
       </Routes>
     </QueryClientProvider>
