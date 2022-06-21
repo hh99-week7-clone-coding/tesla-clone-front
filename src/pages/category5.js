@@ -44,54 +44,6 @@ const Category5 = () => {
                         cost="$225"/>
                 </StCardAlign>
             </StContainer>
-            <StContainer>
-                <StTitleWrap>
-                    <StCardTitle>Wheel and Tires</StCardTitle>
-                </StTitleWrap>
-                <StCardAlign>
-                    <ModelY
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_1.jpg"
-                        title="Model Y All-Weather Interior Liners"
-                        cost="$225"/>
-                </StCardAlign>
-            </StContainer>
-            <StContainer>
-                <StTitleWrap>
-                    <StCardTitle>Floor Mats</StCardTitle>
-                </StTitleWrap>
-                <StCardAlign>
-                    <ModelY
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_1.jpg"
-                        title="Model Y All-Weather Interior Liners"
-                        cost="$225"/>
-                </StCardAlign>
-            </StContainer>
-            <StContainer>
-                <StTitleWrap>
-                    <StCardTitle>Parts</StCardTitle>
-                </StTitleWrap>
-                <StCardAlign>
-                    <ModelY
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_1.jpg"
-                        title="Model Y All-Weather Interior Liners"
-                        cost="$225"/>
-                </StCardAlign>
-            </StContainer>
-            <StContainer>
-                <StTitleWrap>
-                    <StCardTitle>Keys</StCardTitle>
-                </StTitleWrap>
-                <StCardAlign>
-                    <ModelY
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_1.jpg"
-                        title="Model Y All-Weather Interior Liners"
-                        cost="$225"/>
-                </StCardAlign>
-            </StContainer>
         </Wrap>
     </>
     )

@@ -44,54 +44,6 @@ const Category4 = () => {
                         cost="$120"/>
                 </StCardAlign>
             </StContainer>
-            <StContainer>
-                <StTitleWrap>
-                    <StCardTitle>Wheel and Tires</StCardTitle>
-                </StTitleWrap>
-                <StCardAlign>
-                    <ModelX
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_1_2000.jpg"
-                        title="Model X All-Weather Interior Mats"
-                        cost="$120"/>
-                </StCardAlign>
-            </StContainer>
-            <StContainer>
-                <StTitleWrap>
-                    <StCardTitle>Floor Mats</StCardTitle>
-                </StTitleWrap>
-                <StCardAlign>
-                    <ModelX
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_1_2000.jpg"
-                        title="Model X All-Weather Interior Mats"
-                        cost="$120"/>
-                </StCardAlign>
-            </StContainer>
-            <StContainer>
-                <StTitleWrap>
-                    <StCardTitle>Parts</StCardTitle>
-                </StTitleWrap>
-                <StCardAlign>
-                    <ModelX
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_1_2000.jpg"
-                        title="Model X All-Weather Interior Mats"
-                        cost="$120"/>
-                </StCardAlign>
-            </StContainer>
-            <StContainer>
-                <StTitleWrap>
-                    <StCardTitle>Keys</StCardTitle>
-                </StTitleWrap>
-                <StCardAlign>
-                    <ModelX
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_1_2000.jpg"
-                        title="Model X All-Weather Interior Mats"
-                        cost="$120"/>
-                </StCardAlign>
-            </StContainer>
         </Wrap>
     </>
     )
