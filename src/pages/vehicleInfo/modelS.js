@@ -20,8 +20,6 @@ import modelS_7 from "../../image/detail/model3/detail-model3-2.jfif";
 
 const ModelS = () => {
 
-  
-
   return (
     <StContainer>
       <Header top="20px"/>
@@ -38,7 +36,7 @@ const ModelS = () => {
         infoSmall3="Top Speed"
         infoBig4="1,020 hp"
         infoSmall4="Peak Power"
-        modelId=""/>
+        modelId={1}/>
       <Section2
         Img1={modelS_2}
         Img2={modelS_3}
@@ -57,6 +55,7 @@ const ModelS = () => {
           title="Designed for Efficiency"
           text="With a drag coefficient of just .208 Cd, the lowest on the planet, Model S is built for speed, endurance and range. Improved aerodynamics and a wider chassis offer more responsive performance so you can take corners quicker and with more confidence."
           InfoBackground="black"
+          modelId={1}
         />
         <Section4 
           img={modelS_6}
@@ -87,7 +86,7 @@ const ModelS = () => {
         <Section5
           title="Model S"
           img={modelS_7}
-          modelId=""/>
+          modelId={1}/>
     </StContainer>
 
   )

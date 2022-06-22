@@ -1,5 +1,7 @@
 import React, { useState }  from 'react'
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import ImgSlide from '../components/ImgSlide';
 import VehicleDetailTextBox from '../components/VehicleDetailTextBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,8 +10,17 @@ import { StSpan, StInfoText } from "../components/VehicleDetailTextBox";
 import { StLink, StLogo } from "../components/Styles";
 import VehicleDetailModal from '../components/VehicleDetailModal';
 import "./style/vehicleDetail.css";
+import { useGetVehicleDetail } from "../Hooks/useGetVehicleDetail";
 
 const VehicleDetail = () => {
+
+    const vehicleId = useParams().vehicleName;
+    const nextVehicleId = Number(vehicleId) + 1
+
+    const { data } = useGetVehicleDetail(vehicleId);
+    const nextData = useGetVehicleDetail(nextVehicleId).data
+    const savingPrice1 = data?.basePrice - 7350
+    const savingPrice2 = nextData?.basePrice - 7350
 
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -21,24 +32,54 @@ const VehicleDetail = () => {
         setModalOpen(false)
     }
 
+    const btnClicked = useSelector(state => state.vehicleDetail.costBtnClicked)
+
   return (
     <>
         <StModalBackground onClick={onModalClose} modalOpen={modalOpen}>
-            <VehicleDetailModal/>
+            <VehicleDetailModal 
+                basePrice1={data?.basePrice} 
+                basePrice2={nextData?.basePrice}
+                savingPrice1={savingPrice1}
+                savingPrice2={savingPrice2}/>
         </StModalBackground>
         <StLink to={'/'}><StLogo>TESLA</StLogo></StLink>
         <StDetailBox>
-            <ImgSlide/>
-            <VehicleDetailTextBox/>
+            <ImgSlide image1Url={data?.imageUrl} image2Url={nextData?.imageUrl}/>
+            <VehicleDetailTextBox
+                vehicle1Name={data?.vehicleName}
+                vehicle2Name={nextData?.vehicleName}
+                rangeMiles1={data?.rangeMiles}
+                rangeMiles2={nextData?.rangeMiles}
+                topSpeed1={data?.topSpeed}
+                topSpeed2={nextData?.topSpeed}
+                acceleration1={data?.acceleration}
+                acceleration2={nextData?.acceleration}
+                basePrice1={data?.basePrice}
+                basePrice2={nextData?.basePrice}
+                savingPrice1={savingPrice1}
+                savingPrice2={savingPrice2}
+                vehicle2/>
         </StDetailBox>
-        <StModalBtn onClick={onModalOpen}>
+
+        { btnClicked ? 
+        (<StModalBtn onClick={onModalOpen}>
             <StIconBox>
                 <FontAwesomeIcon icon={faArrowDown} style={{color:"rgba(0,0,0,0.5"}}/>
             </StIconBox>
-            <StSpan>$59,490 Vehicle Price</StSpan>
+            <StSpan>${nextData?.basePrice} Vehicle Price</StSpan>
             <StInfoText>|</StInfoText>
-            <StInfoText>$52,140 After potential savings</StInfoText>
-        </StModalBtn>
+            <StInfoText>$ {savingPrice2} After potential savings</StInfoText>
+        </StModalBtn>) : 
+        
+        (<StModalBtn onClick={onModalOpen}>
+            <StIconBox>
+                <FontAwesomeIcon icon={faArrowDown} style={{color:"rgba(0,0,0,0.5"}}/>
+            </StIconBox>
+            <StSpan>${data?.basePrice} Vehicle Price</StSpan>
+            <StInfoText>|</StInfoText>
+            <StInfoText>$ {savingPrice1} After potential savings</StInfoText>
+        </StModalBtn>)}
     </>
   )
 }

@@ -7,7 +7,6 @@ import { StTitle, StContainer } from './Styles';
 
 const FirstImage = ({Img, MobileImg, title, text, btn1, btn2}) => {
 
-    
   return (
     <StContainer>
         <StMainImg Img={Img} MobileImg={MobileImg}>
@@ -16,7 +15,7 @@ const FirstImage = ({Img, MobileImg, title, text, btn1, btn2}) => {
                     <StTitle>{title}</StTitle>
                     <StText>{text}</StText>
                 </StTitleBox>
-                <MainBtn btn1={btn1} btn2={btn2}/>
+                <MainBtn btn1={btn1} btn2={btn2} vehicleId={3}/>
             </StImgContent>
         </StMainImg>
     </StContainer>
@@ -39,7 +38,7 @@ const StMainImg = styled.div`
 
 const StImgContent = styled.div`
     position: absolute;
-    top: 10vh;
+    top: 15vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

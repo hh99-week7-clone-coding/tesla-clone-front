@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
-import { StMainImg, StTitleBox, StTitle, StText, StInfoBig, StInfoSmall, StBtn } from '../Styles';
+import { StLink, StMainImg, StTitleBox, StTitle, StText, StInfoBig, StInfoSmall, StBtn } from '../Styles';
 
 const Section1 = ({Img, MobileImg, title, text, infoBig1, infoSmall1, infoBig2, infoSmall2, infoBig3, infoSmall3, infoBig4, infoSmall4, modelId}) => {
+
   return (
     <>
         <StMainImg Img={Img} MobileImg={MobileImg}/>
@@ -29,11 +30,11 @@ const Section1 = ({Img, MobileImg, title, text, infoBig1, infoSmall1, infoBig2, 
                 <StInfoBig>{infoBig4}</StInfoBig>
                 <StInfoSmall>{infoSmall4}</StInfoSmall>
               </StInfoInnerBox>
-              <StBtn backgroundColor="transparent" 
+              <StLink to={`/vehicle/${modelId}`}><StBtn backgroundColor="transparent" 
                       color="white" 
                       border="3px solid white" 
                       animation="mounting 3.4s">
-              ORDER NOW</StBtn>
+              ORDER NOW</StBtn></StLink>
           </StInfoBox>
         </StInfoContainer>
       </StContentBox>
