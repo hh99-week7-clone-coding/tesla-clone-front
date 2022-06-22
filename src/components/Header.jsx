@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeCookie, getCookie } from '../Cookie'
 import { menuOpen } from "../redux/modules/home";
+import { isLoginUser } from "../redux/modules/home";
 import styled from "styled-components";
 import "../App.css";
 
@@ -9,12 +11,24 @@ const Header = ({top}) => {
 
     const dispatch = useDispatch();
 
+    const token = getCookie("token");
+
+    useEffect(() => {
+        
+        if(token){
+            dispatch(isLoginUser(true))
+        } else {
+            dispatch(isLoginUser(false))
+        }
+    },[dispatch, token])
+
     const [hover, setHover] = useState(0);
     const [sideHover, setSideHover] = useState(0);
     const [out, setOut] = useState(false);
     const [sideOut, setSideOut] = useState(false);
 
     const isMenuOpened = useSelector(state => state.home.menuOpened)
+    const isLogin = useSelector(state => state.home.isLogin)
 
     const onHoverBtn = (event) => {
         setHover(event.target.id);
@@ -38,6 +52,12 @@ const Header = ({top}) => {
         dispatch(menuOpen())
     }
 
+    const logOutHandler = () => {
+        removeCookie("token");
+        dispatch(isLoginUser(false));
+        alert("SEE YOU AGAIN")
+    }
+
   return (
     <StHeaderBox top={top}>
         <StLink to={'/'}><StLogo>TESLA</StLogo></StLink>
@@ -51,7 +71,8 @@ const Header = ({top}) => {
         </StMenuBox>
         <StMenuBox width="13vw" minWidth="250px"  onMouseLeave={onSideOut}>
             <StMenuBtn id="0" onMouseEnter={onSideHoverBtn}><StLink to={'/shop'}>Shop</StLink></StMenuBtn>
-            <StMenuBtn id="110" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>
+            { isLogin ? (<StMenuBtn id="110" onMouseEnter={onSideHoverBtn} onClick={logOutHandler}>LogOut</StMenuBtn>) :
+            (<StMenuBtn id="110" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>)}
             <StMenuBtn id="220" onMouseEnter={onSideHoverBtn} onClick={onMenuOpen}>Menu</StMenuBtn>
             <StMenuHover hover={sideHover} out={sideOut} width="calc(100% / 4)"/>
         </StMenuBox>
