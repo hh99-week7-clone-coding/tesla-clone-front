@@ -1,11 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { StLogo, StLink } from '../components/Styles';
 // import Hook
 import UseLogin from "../Hooks/UseLogin";
 
 const Login = () => {
+
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState : {error}} = useForm({
     defaultValues : {
@@ -17,7 +20,8 @@ const Login = () => {
   const { mutate, isLoading } = UseLogin();
 
   const onSubmit = data => {
-    mutate(data)
+    mutate(data);
+    navigate('/')
   }
 
 
