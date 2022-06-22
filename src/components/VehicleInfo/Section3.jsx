@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import {  StInfoBig, StInfoSmall, StBtn } from '../Styles';
+import { StLink, StInfoBig, StInfoSmall, StBtn } from '../Styles';
 
 
 const Section3 = ({Img, MobileImg, smallTitle, title, text, modelId}) => {
@@ -11,7 +11,7 @@ const Section3 = ({Img, MobileImg, smallTitle, title, text, modelId}) => {
         <div style={{width:"20%", display:"flex", flexDirection:"column", justifyContent:"center"}}>
           <StInfoSmall>{smallTitle}</StInfoSmall>
           <StInfoBig>{title}</StInfoBig>
-          <StBtn backgroundColor="transparent" color="white" border="3px solid white">ORDER NOW</StBtn>
+          <StLink to={`/vehicle/${modelId}`}><StBtn backgroundColor="transparent" color="white" border="3px solid white">ORDER NOW</StBtn></StLink>
         </div>
         <div style={{width:"40%", display:"flex", flexDirection:"column", justifyContent:"center"}}>
           <StInfoSmall>{text}</StInfoSmall>

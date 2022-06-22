@@ -25,16 +25,16 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Routes>
         <Route path = "/" element={<Home/>}/>
-        <Route path = "/vehicle/detail" element={<VehicleDetail/>}/>
+        <Route path = "/vehicle/:vehicleName" element={<VehicleDetail/>}/>
         <Route path = "/login" element={<Login/>}/>
         <Route path = "/signup" element={<Signup/>}/>
         <Route path = "/shop" element={<Shop/>}/>
         <Route path = "/shop/category/charging" element={<Category1/>}/>
         <Route path = "/shop/item/itemName" element={<ShopDetail/>}/>
-        <Route path = "/vehicle/info/modelS" element={<ModelS/>}/>
-        <Route path = "/vehicle/info/model3" element={<Model3/>}/>
-        <Route path = "/vehicle/info/modelX" element={<ModelX/>}/>
-        <Route path = "/vehicle/info/modelY" element={<ModelY/>}/>
+        <Route path = "/vehicle/info/model%20S" element={<ModelS/>}/>
+        <Route path = "/vehicle/info/model%203" element={<Model3/>}/>
+        <Route path = "/vehicle/info/model%20X" element={<ModelX/>}/>
+        <Route path = "/vehicle/info/model%20Y" element={<ModelY/>}/>
         <Route path = "/shop/cart/:id" element={<Cart/>}/>
       </Routes>
     </QueryClientProvider>

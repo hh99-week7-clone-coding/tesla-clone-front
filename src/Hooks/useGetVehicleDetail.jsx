@@ -1,0 +1,13 @@
+import React from 'react'
+import { useQuery } from 'react-query'
+import apis from '../api/main'
+
+export const useGetVehicleDetail = (vehicleId) => {
+ const fetcher = async () => {
+    const { data } = await apis.getVehicleDetails(vehicleId);
+    
+    return data;
+  };
+
+  return useQuery(["vehicleDetail", vehicleId], fetcher)
+}

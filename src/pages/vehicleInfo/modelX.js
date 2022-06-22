@@ -33,7 +33,7 @@ const ModelX = () => {
         infoSmall3="1/4 Mile"
         infoBig4="1,020 hp"
         infoSmall4="Peak Power"
-        modelId=""/>
+        modelId={6}/>
         <Section2
         Img1={modelX_2}
         Img2={modelX_3}
@@ -51,6 +51,7 @@ const ModelX = () => {
           smallTitle="Plaid"
           title="Beyond Ludicrous"
           text="With the most power and quickest acceleration of any SUV, Model X Plaid is the highest performing SUV ever built. All Model X powertrains, with updated battery architecture, can deliver instant torque at any speed."
+          modelId={6}
         />
         <Section4 
           img={modelX_6}
@@ -81,7 +82,7 @@ const ModelX = () => {
         <Section5
           title="Model X"
           img={modelX_7}
-          modelId=""/>
+          modelId={6}/>
     </>
   )
 }

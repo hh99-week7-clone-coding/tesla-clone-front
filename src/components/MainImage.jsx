@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useInView } from "react-intersection-observer";
 import "../pages/style/home.css";
 // import components
-import MainBtn from './MainBtn';
+import MainBtn from "./MainBtn";
 import { StMainImg, StContainer,  StTitleBox, StTitle, StText } from '../components/Styles';
 
 
@@ -12,7 +12,7 @@ const MainImage = forwardRef(({Img, MobileImg, title, text, btn1, btn2}, section
     const { ref, inView } = useInView({
         threshold: 0.5  
       });
-    
+
   return (
     <StContainer ref={section2Ref}>
         <StMainImg Img={Img} MobileImg={MobileImg}>
@@ -21,7 +21,9 @@ const MainImage = forwardRef(({Img, MobileImg, title, text, btn1, btn2}, section
                     <StTitle>{title}</StTitle>
                     <StText>{text}</StText>
                 </StTitleBox>
-                <MainBtn btn1={btn1} btn2={btn2}/>
+                { title === "Model Y" ? <MainBtn btn1={btn1} btn2={btn2} vehicleId={8}/> : <div></div>}
+                { title === "Model S" ? <MainBtn btn1={btn1} btn2={btn2} vehicleId={1}/> : <div></div>}
+                { title === "Model X" ? <MainBtn btn1={btn1} btn2={btn2} vehicleId={6}/> : <div></div>}
             </StImgContent>
             <StInViewBox ref={ref}/>
         </StMainImg>
@@ -44,7 +46,7 @@ const StImgContent = styled.div`
 const StInViewBox = styled.div`
     position: absolute;
     top: 400px;
-    width: 500px;
+    width: 1px;
     height: 600px;
 `;
 

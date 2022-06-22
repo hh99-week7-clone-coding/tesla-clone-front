@@ -62,10 +62,10 @@ const Header = ({top}) => {
     <StHeaderBox top={top}>
         <StLink to={'/'}><StLogo>TESLA</StLogo></StLink>
         <StMenuBox width="30vw" minWidth="400px" onMouseLeave={onOut}>
-            <StMenuBtn id="5" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/modelS'}>Model S</StLink></StMenuBtn>
-            <StMenuBtn id="115" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model3'}>Model 3</StLink></StMenuBtn>
-            <StMenuBtn id="230" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/modelX'}>Model X</StLink></StMenuBtn>
-            <StMenuBtn id="340" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/modelY'}>Model Y</StLink></StMenuBtn>
+            <StMenuBtn id="5" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model%20S'}>Model S</StLink></StMenuBtn>
+            <StMenuBtn id="115" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model%203'}>Model 3</StLink></StMenuBtn>
+            <StMenuBtn id="230" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model%20X'}>Model X</StLink></StMenuBtn>
+            <StMenuBtn id="340" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model%20Y'}>Model Y</StLink></StMenuBtn>
             <StMenuBtn id="455" onMouseEnter={onHoverBtn}>About Us</StMenuBtn>
             <StMenuHover hover={hover} out={out} width="100px"/>
         </StMenuBox>

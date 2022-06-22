@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components';
-import { StSectionContainer, StTitle, StBtn } from '../Styles';
+import { StLink, StSectionContainer, StTitle, StBtn } from '../Styles';
 
 
-const Section5 = ({title, img}) => {
+const Section5 = ({title, img, modelId}) => {
   return (
     <>
         <StSectionContainer backgroundColor="white">
             <StSection5Box>
                 <StTitle>{title}</StTitle>
                 <StBtnBox>
-                    <StBtn backgroundColor="transparent" color="black" border="3px solid black">ORDER NOW</StBtn>
+                    <StLink to={`/vehicle/${modelId}`}><StBtn backgroundColor="transparent" color="black" border="3px solid black">ORDER NOW</StBtn></StLink>
                     <StBtn backgroundColor="transparent" color="black" border="3px solid black">COMPARE</StBtn>
                 </StBtnBox>
             </StSection5Box>
