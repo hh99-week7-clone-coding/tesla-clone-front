@@ -12,7 +12,6 @@ const Category6 = () => {
   const bestseller = useSelector(state => state.modelslist.bestseller);
 
 
-  console.log(bestseller);
 
   const MenID1 = "men.best-sellers";
 

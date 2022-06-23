@@ -7,17 +7,14 @@ import { __loadCategory, __loadOnTheRoad, __loadParts } from '../redux/modules/c
 
 
 
-const Category1 = (props) => {
+const Category1 = () => {
 
-    console.log(props);
-
+    
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const categories = useSelector(state => state.categories.categorydata);
     const ontheroad = useSelector(state => state.categories.ontheroad);
     const parts = useSelector(state => state.categories.parts);
-
-    
 
  
     const ChargingID = "charging.at-home";
@@ -39,9 +36,6 @@ const Category1 = (props) => {
     useEffect(()=>{
       dispatch(__loadParts(ChargingID3));
     },[dispatch])
-
-    
-   
 
 
   return (

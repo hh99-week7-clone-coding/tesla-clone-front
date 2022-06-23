@@ -16,8 +16,6 @@ const Category9 = () => {
     const outdoor = useSelector(state => state.lifestylelist.outdoor);
     const giftcard = useSelector(state => state.lifestylelist.giftcard);
   
-    console.log(bestseller, miniteslas, drinkware, outdoor, giftcard);
-
   
   
     const LifeID1 = "lifestyle.best-sellers";

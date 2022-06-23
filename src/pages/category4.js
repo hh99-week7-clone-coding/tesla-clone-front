@@ -13,9 +13,6 @@ const Category4 = () => {
     const interior = useSelector(state => state.modelslist.interior);
     const exterior = useSelector(state => state.modelslist.exterior);
 
-    console.log(bestseller);
-    console.log(interior);
-    console.log(exterior);
 
 
     const ModelXID1 = "model-x.best-sellers";
