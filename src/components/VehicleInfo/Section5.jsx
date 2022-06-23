@@ -11,7 +11,7 @@ const Section5 = ({title, img, modelId}) => {
                 <StTitle>{title}</StTitle>
                 <StBtnBox>
                     <StLink to={`/vehicle/${modelId}`}><StBtn backgroundColor="transparent" color="black" border="3px solid black">ORDER NOW</StBtn></StLink>
-                    <StBtn backgroundColor="transparent" color="black" border="3px solid black">COMPARE</StBtn>
+                    <StLink to={`/vehicle/compare`}><StBtn backgroundColor="transparent" color="black" border="3px solid black">COMPARE</StBtn></StLink>
                 </StBtnBox>
             </StSection5Box>
             <StSection5Box img={img}>
