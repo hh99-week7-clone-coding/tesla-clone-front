@@ -3,6 +3,8 @@ import Styled from 'styled-components';
 
   const Charging = ({url, ChangeUrl, title, cost}) => {
 
+
+
     function over(e){
       e.currentTarget.src = ChangeUrl;
     }
@@ -22,7 +24,7 @@ import Styled from 'styled-components';
             <StCardList>
               <StSmallWrap>
                 <StCaTitle>{title}</StCaTitle>
-                <StP>{cost}</StP>
+                <StP>${cost}</StP>
               </StSmallWrap>
             </StCardList>
           </StCardWrap>

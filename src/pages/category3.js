@@ -1,8 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import Model3 from '../components/Category/Model3';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { __loadBestSellor, __loadInterior, __loadExterior } from '../redux/modules/model3';
 
 const Category3 = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const bestseller = useSelector(state => state.modelslist.bestseller);
+    const interior = useSelector(state => state.modelslist.interior);
+    const exterior = useSelector(state => state.modelslist.exterior);
+
+    console.log(bestseller);
+    console.log(interior);
+    console.log(exterior);
+
+
+    const Model3ID1 = "model-3.best-sellers";
+    const Model3ID2 = "model-3.interior";
+    const Model3ID3 = "model-3.exterior";
+
+    useEffect(()=>{
+        dispatch(__loadBestSellor(Model3ID1));
+
+    },[dispatch]);
+
+
+    useEffect(()=>{
+        dispatch(__loadInterior(Model3ID2));
+    },[dispatch])
+
+
+
+    useEffect(()=>{
+        dispatch(__loadExterior(Model3ID3));
+    },[dispatch])
 
     return (
         <> 
@@ -13,11 +47,19 @@ const Category3 = () => {
                     <StCardTitle>Best Sellers</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <Model3
-                    url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/INTERIOR/1448751-00-B_0_2000.jpg"
-                    ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/INTERIOR/1448751-00-B_1.jpg"
-                    title="Model 3 All-Weather Interior Liners"
-                    cost="$225"/>
+                    {bestseller && 
+                    bestseller.map((item)=>(
+                        <Model3
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -25,11 +67,19 @@ const Category3 = () => {
                     <StCardTitle>Interior</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <Model3
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/INTERIOR/1448751-00-B_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/INTERIOR/1448751-00-B_1.jpg"
-                        title="Model 3 All-Weather Interior Liners"
-                        cost="$225"/>
+                    {interior && 
+                        interior.map((item)=>(
+                        <Model3
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -37,11 +87,19 @@ const Category3 = () => {
                     <StCardTitle>Exterior</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <Model3
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/INTERIOR/1448751-00-B_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/INTERIOR/1448751-00-B_1.jpg"
-                        title="Model 3 All-Weather Interior Liners"
-                        cost="$225"/>
+                    {exterior && 
+                        exterior.map((item)=>(
+                        <Model3
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
         </Wrap>

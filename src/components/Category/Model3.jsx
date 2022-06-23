@@ -22,7 +22,7 @@ import Styled from 'styled-components';
             <StCardList>
               <StSmallWrap>
                 <StCaTitle>{title}</StCaTitle>
-                <StP>{cost}</StP>
+                <StP>${cost}</StP>
               </StSmallWrap>
             </StCardList>
           </StCardWrap>

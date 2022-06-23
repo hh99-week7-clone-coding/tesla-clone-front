@@ -1,10 +1,49 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import ModelS from "../components/Category/ModelS";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { __loadBestSellor, __loadInterior, __loadExterior } from '../redux/modules/models';
 
 
 
 const Category2 = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const bestseller = useSelector(state => state.modelslist.bestseller);
+  const interior = useSelector(state => state.modelslist.interior);
+  const exterior = useSelector(state => state.modelslist.exterior);
+
+  console.log(bestseller);
+  console.log(interior);
+  console.log(exterior);
+
+
+  const ModelSID1 = "model-s.best-sellers";
+  const ModelSID2 = "model-s.interior";
+  const ModelSID3 = "model-s.exterior";
+
+  useEffect(()=>{
+    dispatch(__loadBestSellor(ModelSID1));
+
+  },[dispatch]);
+
+
+  useEffect(()=>{
+    dispatch(__loadInterior(ModelSID2));
+  },[dispatch])
+
+
+
+  useEffect(()=>{
+    dispatch(__loadExterior(ModelSID3));
+  },[dispatch])
+
+
+  const categoryId = useParams();
+
+  console.log(categoryId);
 
 
   return (
@@ -16,11 +55,19 @@ const Category2 = () => {
             <StCardTitle>Best Sellers</StCardTitle>
           </StTitleWrap>
           <StCardAlign>
-            <ModelS
-              url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/INTERIOR/1669541-00-A_0_2000.jpg"
-              ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/INTERIOR/1669541-00-A_1_2000.jpg"
-              title="Model S All-Weather Interior Liners"
-              cost="$250"/>
+            {bestseller && 
+              bestseller.map((item)=>(
+                <ModelS
+                key={item.itemId}
+                url={item.imageUrl}
+                ChangeUrl={item.imageOverUrl}
+                title={item.itemName}
+                cost={item.price}
+                onClick={()=>{
+                  navigate(`/shop/category/${item.categoryId}`)
+                }}
+                />
+              ))}
           </StCardAlign>
         </StContainer>
         <StContainer>
@@ -28,11 +75,19 @@ const Category2 = () => {
             <StCardTitle>Interior</StCardTitle>
           </StTitleWrap>
           <StCardAlign>
-            <ModelS
-              url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/INTERIOR/1669541-00-A_0_2000.jpg"
-              ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/INTERIOR/1669541-00-A_1_2000.jpg"
-              title="Model S All-Weather Interior Liners"
-              cost="$250"/>
+            {interior && 
+              interior.map((item)=>(
+                <ModelS
+                key={item.itemId}
+                url={item.imageUrl}
+                ChangeUrl={item.imageOverUrl}
+                title={item.itemName}
+                cost={item.price}
+                onClick={()=>{
+                  navigate(`/shop/category/${item.categoryId}`)
+                }}
+                />
+              ))}
           </StCardAlign>
         </StContainer>
         <StContainer>
@@ -40,11 +95,19 @@ const Category2 = () => {
             <StCardTitle>Exterior</StCardTitle>
           </StTitleWrap>
           <StCardAlign>
-            <ModelS
-              url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/INTERIOR/1669541-00-A_0_2000.jpg"
-              ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/INTERIOR/1669541-00-A_1_2000.jpg"
-              title="Model S All-Weather Interior Liners"
-              cost="$250"/>
+          {exterior && 
+              exterior.map((item)=>(
+                <ModelS
+                key={item.itemId}
+                url={item.imageUrl}
+                ChangeUrl={item.imageOverUrl}
+                title={item.itemName}
+                cost={item.price}
+                onClick={()=>{
+                  navigate(`/shop/category/${item.categoryId}`)
+                }}
+                />
+              ))}
           </StCardAlign>
         </StContainer>        
     </Wrap>

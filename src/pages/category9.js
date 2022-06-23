@@ -1,8 +1,54 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import LifeStyle from '../components/Category/LifeStyle';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { __loadBestSellor, __loadMini, __loadDrinkWare, __loadOutDoor, __loadGiftCard } from '../redux/modules/lifestyle'
 
 const Category9 = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const bestseller = useSelector(state => state.lifestylelist.bestseller);
+    const miniteslas = useSelector(state => state.lifestylelist.miniteslas);
+    const drinkware = useSelector(state => state.lifestylelist.drinkware);
+    const outdoor = useSelector(state => state.lifestylelist.outdoor);
+    const giftcard = useSelector(state => state.lifestylelist.giftcard);
+  
+    console.log(bestseller, miniteslas, drinkware, outdoor, giftcard);
+
+  
+  
+    const LifeID1 = "lifestyle.best-sellers";
+    const LifeID2 = "lifestyle.mini-teslas";
+    const LifeID3 = "lifestyle.drinkware";
+    const LifeID4 = "lifestyle.outdoor-tech";
+    const LifeID5 = "lifestyle.gift-card";
+  
+    useEffect(()=>{
+      dispatch(__loadBestSellor(LifeID1));
+  
+    },[dispatch]);
+  
+  
+    useEffect(()=>{
+      dispatch(__loadMini(LifeID2));
+    },[dispatch])
+  
+  
+  
+    useEffect(()=>{
+      dispatch(__loadDrinkWare(LifeID3));
+    },[dispatch])
+
+    useEffect(()=>{
+        dispatch(__loadOutDoor(LifeID4));
+      },[dispatch])
+
+      useEffect(()=>{
+        dispatch(__loadGiftCard(LifeID5));
+      },[dispatch])
 
     return (
         <> 
@@ -13,11 +59,19 @@ const Category9 = () => {
                     <StCardTitle>Best Sellers</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <LifeStyle
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        title="Tesla Tequila Limited Edition Set"
-                        cost="$420"/>
+                    {bestseller && 
+                        bestseller.map((item)=>(
+                        <LifeStyle
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -25,11 +79,19 @@ const Category9 = () => {
                     <StCardTitle>Mini Teslas</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <LifeStyle
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        title="Tesla Tequila Limited Edition Set"
-                        cost="$420"/>
+                    {miniteslas && 
+                        miniteslas.map((item)=>(
+                        <LifeStyle
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -37,11 +99,19 @@ const Category9 = () => {
                     <StCardTitle>Drinkware</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <LifeStyle
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        title="Tesla Tequila Limited Edition Set"
-                        cost="$420"/>
+                    {drinkware && 
+                        drinkware.map((item)=>(
+                        <LifeStyle
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -49,11 +119,19 @@ const Category9 = () => {
                     <StCardTitle>Outdoor & Tech</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <LifeStyle
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        title="Tesla Tequila Limited Edition Set"
-                        cost="$420"/>
+                    {outdoor && 
+                        outdoor.map((item)=>(
+                        <LifeStyle
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>            
             <StContainer>
@@ -61,15 +139,21 @@ const Category9 = () => {
                     <StCardTitle>Gift Card</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <LifeStyle
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/ACCESSORIES_COLLECTIBLES/DRINKWARE/1617866-00-A.jpg"
-                        title="Tesla Tequila Limited Edition Set"
-                        cost="$420"/>
+                    {giftcard && 
+                        giftcard.map((item)=>(
+                        <LifeStyle
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
-           
-            
         </Wrap>
     </>
     )

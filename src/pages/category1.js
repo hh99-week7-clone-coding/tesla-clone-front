@@ -1,10 +1,47 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import Charging from '../components/Category/Charging';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { __loadCategory, __loadOnTheRoad, __loadParts } from '../redux/modules/charging';
 
 
 
-const category1 = () => {
+const Category1 = (props) => {
+
+    console.log(props);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const categories = useSelector(state => state.categories.categorydata);
+    const ontheroad = useSelector(state => state.categories.ontheroad);
+    const parts = useSelector(state => state.categories.parts);
+
+    
+
+ 
+    const ChargingID = "charging.at-home";
+    const ChargingID2 = "charging.on-the-road";
+    const ChargingID3 = "charging.parts";
+
+    useEffect(()=>{
+      dispatch(__loadCategory(ChargingID));
+
+    },[dispatch]);
+
+
+    useEffect(()=>{
+      dispatch(__loadOnTheRoad(ChargingID2));
+    },[dispatch])
+
+
+
+    useEffect(()=>{
+      dispatch(__loadParts(ChargingID3));
+    },[dispatch])
+
+    
+   
 
 
   return (
@@ -16,12 +53,19 @@ const category1 = () => {
           <StCardTitle>At Home</StCardTitle>
         </StTitleWrap>
         <StCardAlign>
-          <Charging 
-          url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-01-F_0_2000.jpg"
-          ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-02-G_alt.jpg"
-          title="Wall Connect"
-          cost="$400"
-          />
+        {categories &&
+          categories.map((item) =>(
+            <Charging
+            key={item.itemId}
+            url={item.imageUrl}
+            ChangeUrl={item.imageOverUrl}
+            title={item.itemName}
+            cost={item.price}
+            onClick={()=>{
+              navigate(`/shop/category/${item.categoryId}`)
+            }}/>
+          ))}
+          
         </StCardAlign>
       </StContainer>
       <StContainer>
@@ -29,12 +73,19 @@ const category1 = () => {
           <StCardTitle>On the Road</StCardTitle>
         </StTitleWrap>
         <StCardAlign>
-        <Charging 
-          url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-01-F_0_2000.jpg"
-          ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-02-G_alt.jpg"
-          title="Wall Connect"
-          cost="$400"
+        {ontheroad && 
+            ontheroad.map((item)=>(
+            <Charging
+            key={item.itemId}          
+            url={item.imageUrl}
+            ChangeUrl={item.imageOverUrl}
+            title={item.itemName}
+            cost={item.price}
+            onClick={()=>{
+              navigate(`/shop/category/${item.categoryId}`)
+            }}
           />
+            ))}
         </StCardAlign>
       </StContainer>
       <StContainer>
@@ -42,12 +93,19 @@ const category1 = () => {
           <StCardTitle>Parts</StCardTitle>
         </StTitleWrap>
         <StCardAlign>
-        <Charging 
-          url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-01-F_0_2000.jpg"
-          ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1457768-02-G_alt.jpg"
-          title="Wall Connect"
-          cost="$400"
+        {parts &&
+          parts.map((item)=>(
+            <Charging
+            key={item.itemId}
+            url={item.imageUrl}
+            ChangeUrl={item.imageOverUrl}
+            title={item.itemName}
+            cost={item.price}
+            onClick={()=>{
+              navigate(`/shop/category/${item.categoryId}`)
+            }}
           />
+          ))}
         </StCardAlign>
       </StContainer>
     </Wrap>
@@ -98,4 +156,4 @@ const StCardTitle = Styled.h2`
 
 
 
-export default category1;
+export default Category1;
