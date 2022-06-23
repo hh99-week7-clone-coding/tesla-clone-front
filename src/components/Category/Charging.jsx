@@ -33,7 +33,7 @@ import Styled from 'styled-components';
 
 const StCardWrap = Styled.div`
   margin-top: 100px;
-  margin-left: 60px;
+  margin-left: 60px;  
   display: column;
   width: 500px;
   position: relative;

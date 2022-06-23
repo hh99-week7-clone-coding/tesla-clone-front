@@ -27,7 +27,8 @@ const apis = {
     getLifeMini : (id) => api.get(`/api/shop/category/${id}`),
     getLifeDrink : (id) => api.get(`/api/shop/category/${id}`),
     getLifeOutDoor : (id) => api.get(`/api/shop/category/${id}`),
-    getLifeGiftCard : (id) => api.get(`/api/shop/category/${id}`)
+    getLifeGiftCard : (id) => api.get(`/api/shop/category/${id}`),
+    getShopDetail : (id) => api.get(`/api/shop/item/${id}`)
 }
 
 export default apis;

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import Kids from '../components/Category/Kids';
+import ShopCategoryHeader from '../components/ShopCategoryHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { __loadBestSellor } from '../redux/modules/kids';
@@ -22,7 +23,8 @@ const Category8 = () => {
   },[dispatch])
 
     return (
-        <> 
+        <>
+        <ShopCategoryHeader/> 
         <Wrap> 
             <StContainer>
                 <StTitleWrap>
