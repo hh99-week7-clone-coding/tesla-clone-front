@@ -47,13 +47,16 @@ const Detail = ( { url1, url2, title, cost, desc } ) => {
 };
 
 const Wrap = Styled.div`
-    margin-top: 150px;
+    margin-top: 600px;
+    display: column;
     position: relative;
 `;
 
 
 const StPruductContainer = Styled.div`
     margin-left: 30px;
+    margin-top: 30px;
+    
 `;
 
 const StH2 = Styled.h2`

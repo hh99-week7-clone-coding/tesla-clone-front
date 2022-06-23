@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 
 const CategoryImgSlide = ({title, url1, url2}) => {
@@ -37,12 +40,14 @@ const CategoryImgSlide = ({title, url1, url2}) => {
                             />
                         </StInner>
                         <StBtnWrap>
-                            <StBtn1 
-                            ></StBtn1>
+                            <StBtn1
+                            onClick={()=>{
+                                PrevBtn();
+                            }}><FontAwesomeIcon icon={faAngleLeft} /></StBtn1>
                             <StBtn2 
                             onClick={()=>{
                                 NextBtn();
-                            }}></StBtn2>
+                            }}><FontAwesomeIcon icon={faAngleRight} /></StBtn2>
                         </StBtnWrap>
                     </StSlideWrapper>
                 </StSlideBox>
@@ -61,16 +66,15 @@ const CategoryImgSlide = ({title, url1, url2}) => {
                                 src={ImgList[count]}
                                 />
                             </StInner>
-                            <StBtnWrap>
-                                <StBtn1 
-                                onClick={()=>{
-                                    PrevBtn();
-                                }}></StBtn1>
-                                <StBtn2 
-                                onClick={()=>{
-                                    NextBtn();
-                                }}></StBtn2>
-                            </StBtnWrap>
+                            <StBtn1 
+                            onClick={()=>{
+                                PrevBtn();
+                            }}><FontAwesomeIcon icon={faAngleLeft} /></StBtn1>
+                            <StBtn2 
+                            onClick={()=>{
+                                NextBtn();
+                            }}><FontAwesomeIcon icon={faAngleRight} /></StBtn2>
+                        
                         </StSlideWrapper>
                     </StSlideBox>
                 </>
@@ -80,24 +84,28 @@ const CategoryImgSlide = ({title, url1, url2}) => {
 
 const StSlideBox = Styled.div`
     overflow: hidden;
+    display: flex;
+    
 `;
 
-const StSlideWrapper = Styled.div`
-    width: 100vw;
-    position: relative;
-    transition: transform 0.5s; 
+const StSlideWrapper = Styled.div`   
+    width: 50vw;
 `;
 
 
 const StInner = Styled.div`
-  width: 50vw;
-  float: left;
-  display: table;
-  overflow: hidden;
+    width: 25vw;
+    position: fixed;
+    float: left;
+    overflow: hidden;
+    transition: transform 0.5s;
 `;
 
 const StImg = Styled.img`
-  width: 100%;
+    width: 100%;
+    position: relative;
+    margin-top: 150px;
+    display: inline;
 `;
 
 const StBtnWrap = Styled.div`
@@ -109,25 +117,25 @@ const StBtnWrap = Styled.div`
 `;
 
 const StBtn1 = Styled.div`
-  width: 100px;
-  height: 100px;
-  margin: 20px;
-  background-color: green;
-  font-family: "text";
-  &:hover{    
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    font-family: "text";
+    font-size: 150px;  
+    &:hover{    
     cursor: pointer;
-  }
+    }
 `;
 
 const StBtn2 = Styled.div`
-  width: 100px;
-  height: 100px;
-  margin: 20px;
-  background-color: green;
-  font-family: "text";
-  &:hover{    
+    position: fixed;
+    width: 500px;
+    height: 100px;    
+    font-family: "text";
+    font-size: 150px;
+    &:hover{    
     cursor: pointer;
-  }
+}
 `;
 
 export default CategoryImgSlide;

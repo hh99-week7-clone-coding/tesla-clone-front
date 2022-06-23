@@ -6,7 +6,7 @@ import ShopImgSlide from '../components/ShopImgSlide';
   return (
     <>
       <ShopHeader/>
-      <ShopImgSlide/>
+      <ShopImgSlide/>      
     </>
   )
 }
