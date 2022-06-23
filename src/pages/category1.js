@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import Charging from '../components/Category/Charging';
+import ShopCategoryHeader from '../components/ShopCategoryHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { __loadCategory, __loadOnTheRoad, __loadParts } from '../redux/modules/charging';
@@ -39,73 +40,79 @@ const Category1 = () => {
 
 
   return (
-    <>
-    <Wrap>
-      <StContainer>
-        <StTitleWrap>
-          <StTitle>Charging</StTitle>
-          <StCardTitle>At Home</StCardTitle>
-        </StTitleWrap>
-        <StCardAlign>
-        {categories &&
-          categories.map((item) =>(
-            <Charging
-            key={item.itemId}
-            url={item.imageUrl}
-            ChangeUrl={item.imageOverUrl}
-            title={item.itemName}
-            cost={item.price}
-            onClick={()=>{
-              navigate(`/shop/category/${item.categoryId}`)
-            }}/>
-          ))}
-          
-        </StCardAlign>
-      </StContainer>
-      <StContainer>
-        <StTitleWrap>          
-          <StCardTitle>On the Road</StCardTitle>
-        </StTitleWrap>
-        <StCardAlign>
-        {ontheroad && 
-            ontheroad.map((item)=>(
-            <Charging
-            key={item.itemId}          
-            url={item.imageUrl}
-            ChangeUrl={item.imageOverUrl}
-            title={item.itemName}
-            cost={item.price}
-            onClick={()=>{
-              navigate(`/shop/category/${item.categoryId}`)
-            }}
-          />
+    <>    
+      <ShopCategoryHeader/>
+      <Wrap>
+        <StContainer>
+          <StTitleWrap>
+            <StTitle>Charging</StTitle>
+            <StCardTitle>At Home</StCardTitle>
+          </StTitleWrap>
+          <StCardAlign>
+          {categories &&
+            categories.map((item) =>(
+              <Charging
+              key={item.itemId}
+              url={item.imageUrl}
+              ChangeUrl={item.imageOverUrl}
+              title={item.itemName}
+              cost={item.price}
+              onClick={()=>{
+                navigate(`/shop/category/${item.categoryId}`)
+              }}/>
             ))}
-        </StCardAlign>
-      </StContainer>
-      <StContainer>
-        <StTitleWrap>          
-          <StCardTitle>Parts</StCardTitle>
-        </StTitleWrap>
-        <StCardAlign>
-        {parts &&
-          parts.map((item)=>(
-            <Charging
-            key={item.itemId}
-            url={item.imageUrl}
-            ChangeUrl={item.imageOverUrl}
-            title={item.itemName}
-            cost={item.price}
-            onClick={()=>{
-              navigate(`/shop/category/${item.categoryId}`)
-            }}
-          />
-          ))}
-        </StCardAlign>
-      </StContainer>
-    </Wrap>
+            
+          </StCardAlign>
+        </StContainer>
+        <StContainer>
+          <StTitleWrap>          
+            <StCardTitle>On the Road</StCardTitle>
+          </StTitleWrap>
+          <StCardAlign>
+          {ontheroad && 
+              ontheroad.map((item)=>(
+              <Charging
+              key={item.itemId}          
+              url={item.imageUrl}
+              ChangeUrl={item.imageOverUrl}
+              title={item.itemName}
+              cost={item.price}
+              onClick={()=>{
+                navigate(`/shop/category/${item.categoryId}`)
+              }}
+            />
+              ))}
+          </StCardAlign>
+        </StContainer>
+        <StContainer>
+          <StTitleWrap>          
+            <StCardTitle>Parts</StCardTitle>
+          </StTitleWrap>
+          <StCardAlign>
+          {parts &&
+            parts.map((item)=>(
+              <Charging
+              key={item.itemId}
+              url={item.imageUrl}
+              ChangeUrl={item.imageOverUrl}
+              title={item.itemName}
+              cost={item.price}
+              onClick={()=>{
+                navigate(`/shop/category/${item.categoryId}`)
+              }}
+            />
+            ))}
+          </StCardAlign>
+        </StContainer>
+      </Wrap>
     </>
   )
 }
+
+const HerderWrap = Styled.div`
+
+
+`;
 
 const Wrap = Styled.div`
   max-width: 1200px;
@@ -114,8 +121,9 @@ const Wrap = Styled.div`
 `;
 
 const StContainer = Styled.div`
-  margin: 60px auto;
+  margin: 100px auto;
   display: block;
+  display: relative;
   background-color: white;
 `;
 
@@ -134,6 +142,7 @@ const StTitle = Styled.h1`
 `;
 
 const StCardAlign = Styled.ul`
+  width: 100vw;
   justify-content: start;
   display: flex;
   flex-wrap: wrap;

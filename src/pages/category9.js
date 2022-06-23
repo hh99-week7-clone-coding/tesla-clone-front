@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import LifeStyle from '../components/Category/LifeStyle';
+import ShopCategoryHeader from '../components/ShopCategoryHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { __loadBestSellor, __loadMini, __loadDrinkWare, __loadOutDoor, __loadGiftCard } from '../redux/modules/lifestyle'
@@ -23,6 +24,8 @@ const Category9 = () => {
     const LifeID3 = "lifestyle.drinkware";
     const LifeID4 = "lifestyle.outdoor-tech";
     const LifeID5 = "lifestyle.gift-card";
+
+    
   
     useEffect(()=>{
       dispatch(__loadBestSellor(LifeID1));
@@ -49,7 +52,8 @@ const Category9 = () => {
       },[dispatch])
 
     return (
-        <> 
+        <>
+        <ShopCategoryHeader/>
         <Wrap> 
             <StContainer>
                 <StTitleWrap>

@@ -1,25 +1,25 @@
 import React from 'react'
 import styled from 'styled-components';
 import "../App.css";
-import { StLink } from "./Styles";
 import { useNavigate } from 'react-router-dom';
 // import Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
-const ShopHeader = () => {
+const ShopCategoryHeader = () => {
 
-        const navigate = useNavigate();
+    const navigate = useNavigate();
 
-
-        return (
+    return (
         <StHeaderBox>
             <StMenuBox width="250px">
-                <StLogo><StLink to={'/'}>TESLA</StLink></StLogo>
+                <StLogo onClick={()=>{
+                    navigate('/');
+                }}>TESLA</StLogo>
                 <StSpan>|</StSpan>
                 <StMenuBtn>
                     <StSpan onClick={()=>{
-                        navigate('/shop')
+                        navigate('/shop');
                     }}>Shop</StSpan>
                 </StMenuBtn>
             </StMenuBox>
@@ -32,12 +32,37 @@ const ShopHeader = () => {
                 <StMenuBtn>
                     <StSpan onClick={()=>{
                         navigate('/shop/category/model-s');
-                    }}>Vehicle Accessories</StSpan>
+                    }}>Models</StSpan>
+                </StMenuBtn>
+                <StMenuBtn>
+                    <StSpan onClick={()=>{
+                        navigate('/shop/category/model-x');
+                    }}>Modelx</StSpan>
+                </StMenuBtn>
+                <StMenuBtn>
+                    <StSpan onClick={()=>{
+                        navigate('/shop/category/model-y');
+                    }}>Modely</StSpan>
+                </StMenuBtn>
+                <StMenuBtn>
+                    <StSpan onClick={()=>{
+                        navigate('/shop/category/model-3');
+                    }}>Model3</StSpan>
                 </StMenuBtn>
                 <StMenuBtn>
                     <StSpan onClick={()=>{
                         navigate('/shop/category/men');
-                    }}>Apparel</StSpan>
+                    }}>Men</StSpan>
+                </StMenuBtn>
+                <StMenuBtn>
+                    <StSpan onClick={()=>{
+                        navigate('/shop/category/women');
+                    }}>Women</StSpan>
+                </StMenuBtn>
+                <StMenuBtn>
+                    <StSpan onClick={()=>{
+                        navigate('/shop/category/kids');
+                    }}>Kids</StSpan>
                 </StMenuBtn>
                 <StMenuBtn>
                     <StSpan onClick={()=>{
@@ -46,14 +71,14 @@ const ShopHeader = () => {
                 </StMenuBtn>
             </StMenuBox>
             <StMenuBox width="150px">
-                <FontAwesomeIcon icon={faCartShopping} style={{color:"#FFFFFF"}}/>
-                <StMenuBtn>
-                    <StSpan>Menu</StSpan>
-                </StMenuBtn>
+                    <FontAwesomeIcon icon={faCartShopping} style={{color:"#black"}}/>
+                    <StMenuBtn>
+                        <StSpan style={{marginLeft:"10px"}}>Menu</StSpan>
+                    </StMenuBtn>
             </StMenuBox>
         </StHeaderBox>
-        )
-        }
+    )
+}
 
 const StHeaderBox = styled.div`
     position: fixed;
@@ -64,7 +89,7 @@ const StHeaderBox = styled.div`
     justify-content: space-between;
     width: 100vw;
     height: 50px;
-    background-color: transparent;
+    background-color: white;
     z-index: 10;
 `;
 
@@ -74,26 +99,34 @@ const StMenuBox = styled.div`
     align-items: center;
     width: ${props => props.width};
     height: 50px;
+    background-color: white;
+    margin-left: 50px;
 `;
 
 const StLogo = styled.h1`
     font-family: "Logo";
     font-size: 16px;
-    color: white;
+    color: black;
     letter-spacing: 10px;
+    &:hover{    
+    cursor: pointer;
+  }
 `;
 
 const StSpan = styled.span`
+    margin-left: 50px;
     font-family: "text";
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
-    color: white
+    color: black
 `;
+
+
 
 const StMenuBtn = styled.div`
     &:hover{    
-        cursor: pointer;
-    }
+    cursor: pointer;
+  }
 `;
 
-export default ShopHeader;
+export default ShopCategoryHeader;
