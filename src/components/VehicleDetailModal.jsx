@@ -1,9 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import "../pages/style/vehicleDetail.css";
 import { StInfo, StSpan, StInfoText } from "./VehicleDetailTextBox";
 
-const VehicleDetailModal = () => {
+const VehicleDetailModal = ({basePrice1, basePrice2, savingPrice1, savingPrice2}) => {
+
+    const btnClicked = useSelector(state => state.vehicleDetail.costBtnClicked)
+
   return (
         <StModalBox>
             <StInfo>Finance Options</StInfo>
@@ -14,9 +18,15 @@ const VehicleDetailModal = () => {
                     <StTd>
                         <StTableH3>Vehicle Price</StTableH3>
                     </StTd>
-                    <StTd>
-                        <StTableH3>$59,490</StTableH3>
-                    </StTd>
+                    { btnClicked ? 
+                    
+                    (<StTd>
+                        <StTableH3>$ {basePrice2}</StTableH3>
+                    </StTd>) : 
+                    
+                    (<StTd>
+                        <StTableH3>$ {basePrice1}</StTableH3>
+                    </StTd>)}
                     </tr>
                     <tr>
                         <td>
@@ -38,9 +48,14 @@ const VehicleDetailModal = () => {
                     <StTd>
                         <StSpan>Price after potential savings</StSpan>
                     </StTd>
-                    <StTd>
-                        <StSpan>$52,140</StSpan>
-                    </StTd>
+                    { btnClicked ? 
+                    (<StTd>
+                        <StSpan>$ {savingPrice2}</StSpan>
+                    </StTd>) : 
+                    
+                    (<StTd>
+                        <StSpan>$ {savingPrice1}</StSpan>
+                    </StTd>)}
                     </tr>
                     <tr>
                     <td>

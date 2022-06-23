@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components';
 import MainBtn from './MainBtn';
 import "../pages/style/home.css";
+import { StTitle, StContainer } from './Styles';
 
 
 const FirstImage = ({Img, MobileImg, title, text, btn1, btn2}) => {
 
-    
   return (
     <StContainer>
         <StMainImg Img={Img} MobileImg={MobileImg}>
@@ -15,18 +15,13 @@ const FirstImage = ({Img, MobileImg, title, text, btn1, btn2}) => {
                     <StTitle>{title}</StTitle>
                     <StText>{text}</StText>
                 </StTitleBox>
-                <MainBtn btn1={btn1} btn2={btn2}/>
+                <MainBtn btn1={btn1} btn2={btn2} vehicleId={3}/>
             </StImgContent>
         </StMainImg>
     </StContainer>
     
   )
 }
-
-const StContainer = styled.div`
-    width: 100vw;
-    text-align: center;
-`;
 
 const StMainImg = styled.div`
     position: relative;
@@ -43,7 +38,7 @@ const StMainImg = styled.div`
 
 const StImgContent = styled.div`
     position: absolute;
-    top: 10vh;
+    top: 15vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -59,15 +54,6 @@ const StTitleBox = styled.div`
     align-items: center;
     height: 200px;
     width: 500px;
-`;
-
-const StTitle = styled.h1`
-    font-family: text;
-    font-weight: bold;
-    font-size: 40px;
-    margin-bottom: 10px;
-    animation : onMountTitle 1s;
-    animation-fill-mode: forwards;
 `;
 
 const StText = styled.span`

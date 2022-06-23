@@ -1,22 +1,21 @@
 import { useMutation } from 'react-query';
+import { setCookie } from '../Cookie';
 // import Axios Instance
 import apis from "../api/main";
 
-import { setCookie } from '../Cookie';
-
 const login = async (data) => {
-    await apis.login(data);
-
+    const loginUserInfo = await apis.login(data);
+    return loginUserInfo
 }
 
 const UseLogin = () => {
     return useMutation(login, {
-
-        onSuccess : (data, variable, context) => {
-            console.log("로그인 성공!")  // 콘솔 찍힘
-
+        onSuccess : (res) => {
+            setCookie("token", res.headers.authorization)
+            alert("WELCOME TO TESLA")
         },
         onError : (error) => {
+            alert("Please Check your Email or Password !");
             console.log(error)
         }
     })

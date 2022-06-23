@@ -1,10 +1,14 @@
 import React,{ useState } from 'react'
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { costBtnClick } from "../redux/modules/vehicleDetail";
+import { StLink } from "./Styles";
 
-const VehicleDetailTextBox = () => {
+const VehicleDetailTextBox = ({vehicle1Name, vehicle2Name, rangeMiles1, rangeMiles2, topSpeed1, topSpeed2, acceleration1, acceleration2, basePrice1, basePrice2, savingPrice1, savingPrice2}) => {
+
+    const dispatch = useDispatch();
 
     const [btnClicked, setBtnClicked] = useState(false);
     const [costBtnClicked, setCostBtnClicked] = useState(false);
@@ -14,15 +18,17 @@ const VehicleDetailTextBox = () => {
     }
 
     const onClickBtn2 = () => {
-        setBtnClicked(true)
+        setBtnClicked(true);
     }
 
     const onCostBtn1Click = () => {
         setCostBtnClicked(false)
+        dispatch(costBtnClick(false))
     }
 
     const onCostBtn2Click = () => {
         setCostBtnClicked(true)
+        dispatch(costBtnClick(true))
     }
 
   return (
@@ -31,50 +37,77 @@ const VehicleDetailTextBox = () => {
                     <FontAwesomeIcon icon={faCircleInfo} size="2x" style={{ marginRight:"10px", color:"#3e6ae1"}}/>
                     <StSpan>$750 Clean Fuel Reward is now available for California residents.</StSpan>
                 </StGrayBox>
-                <StTitle>Model Y</StTitle>
+                { costBtnClicked ? (<StTitle>{vehicle2Name}</StTitle>) : (<StTitle>{vehicle1Name}</StTitle>)}
                 <StSpan>Est. Delivery: Jan 2023 - Apr 2023</StSpan>
                 <StBtnBox>
                     <StBtn1 onClick={onClickBtn1} clicked={btnClicked}>Purchase Price</StBtn1>
                     <StBtn2 onClick={onClickBtn2} clicked={btnClicked}>Potential Savings</StBtn2>
                 </StBtnBox>
-                <StInfoBox>
+                { costBtnClicked ? 
+                
+                (<StInfoBox>
                     <StInfoInnerBox>
                         <StInfoTitle>
-                            <StInfo>318</StInfo>
+                            <StInfo>{rangeMiles2}</StInfo>
                             <span styled={{fontFamily:"text"}}>mi</span>
                         </StInfoTitle>
                         <StInfoText>Range (est.)</StInfoText>
                     </StInfoInnerBox>
                     <StInfoInnerBox>
                         <StInfoTitle>
-                            <StInfo>135</StInfo>
+                            <StInfo>{topSpeed2}</StInfo>
                             <span styled={{fontFamily:"text"}}>mph</span>
                         </StInfoTitle>
                         <StInfoText>Top Speed</StInfoText>
                     </StInfoInnerBox>
                     <StInfoInnerBox>
                         <StInfoTitle>
-                            <StInfo>4.8</StInfo>
-                            <span styled={{fontFamily:"text"}}>sec</span>
+                            <StInfo>{acceleration2}</StInfo>
+                            <span styled={{fontFamily:"text"}}>km/hc</span>
                         </StInfoTitle>
-                        <StInfoText>0-60 mph</StInfoText>
+                        <StInfoText>acceleration</StInfoText>
                     </StInfoInnerBox>
-                </StInfoBox>
+                </StInfoBox>) : 
+                
+                (<StInfoBox>
+                    <StInfoInnerBox>
+                        <StInfoTitle>
+                            <StInfo>{rangeMiles1}</StInfo>
+                            <span styled={{fontFamily:"text"}}>mi</span>
+                        </StInfoTitle>
+                        <StInfoText>Range (est.)</StInfoText>
+                    </StInfoInnerBox>
+                    <StInfoInnerBox>
+                        <StInfoTitle>
+                            <StInfo>{topSpeed1}</StInfo>
+                            <span styled={{fontFamily:"text"}}>mph</span>
+                        </StInfoTitle>
+                        <StInfoText>Top Speed</StInfoText>
+                    </StInfoInnerBox>
+                    <StInfoInnerBox>
+                        <StInfoTitle>
+                            <StInfo>{acceleration1}</StInfo>
+                            <span styled={{fontFamily:"text"}}>km/hc</span>
+                        </StInfoTitle>
+                        <StInfoText>acceleration</StInfoText>
+                    </StInfoInnerBox>
+                </StInfoBox>)}
+                
                 <StCostBox>
                     <StSpan>Dual Motor All-Wheel Drive</StSpan>
                     <StCostBtn1 onClick={onCostBtn1Click} costBtnClicked={costBtnClicked}>
-                        <StSpan>Model 3 Long Range</StSpan>
-                        {btnClicked ? <StSpan>$ 50,640</StSpan> : <StSpan>$ 57,990</StSpan>}
+                        <StSpan>{vehicle1Name}</StSpan>
+                        {btnClicked ? <StSpan>$ {savingPrice1}</StSpan> : <StSpan>$ {basePrice1}</StSpan>}
                     </StCostBtn1>
                     <StCostBtn2  onClick={onCostBtn2Click} costBtnClicked={costBtnClicked}>
-                        <StSpan>Model 3 Performance</StSpan>
-                        {btnClicked ? <StSpan>$ 55,640</StSpan> : <StSpan>$ 62,990</StSpan>}
+                        <StSpan>{vehicle2Name}</StSpan>
+                        {btnClicked ? <StSpan>$ {savingPrice2}</StSpan> : <StSpan>$ {basePrice2}</StSpan>}
                     </StCostBtn2>
                 </StCostBox>
                 <div style={{width:"85%"}}>
                     <StInfoText>Prices shown include the $750 California Clean Fuel Reward and potential incentives and gas savings for a total of $7,350.</StInfoText>
                 </div>
-                <StModalBtn>FEATURE DETAILS</StModalBtn>
+                <StModalBtn><StLink to={`/vehicle/info/${vehicle1Name}`}>FEATURE DETAILS</StLink></StModalBtn>
             </StTextBox>
   )
 }
@@ -115,6 +148,7 @@ const StTitle = styled.h1`
     font-family: "text";
     margin-top: 60px;
     color: #171a20;
+    transition: 0.2s ease-in-out;
 `;
 
 const StBtnBox = styled.div`
@@ -227,7 +261,7 @@ const StModalBtn = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f4f4f4;
+    background-color: rgba(0,0,0,0.5);
     width: 40%;
     height: 3%;
     font-family: "text";
