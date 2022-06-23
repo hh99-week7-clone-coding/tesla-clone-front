@@ -47,7 +47,7 @@ const Detail = ( { url1, url2, title, cost, desc } ) => {
 };
 
 const Wrap = Styled.div`
-    margin-top: 600px;
+    margin-top: 50px;   
     display: column;
     position: relative;
 `;
@@ -56,7 +56,6 @@ const Wrap = Styled.div`
 const StPruductContainer = Styled.div`
     margin-left: 30px;
     margin-top: 30px;
-    
 `;
 
 const StH2 = Styled.h2`
@@ -119,7 +118,7 @@ const StAddBtn = Styled.div`
 `;
 
 const StDescWrap = Styled.div`
-    margin-top: 50px;
+    margin-top: 150px;
 `;
 
 const StDesc = Styled.p`

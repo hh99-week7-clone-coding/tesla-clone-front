@@ -40,14 +40,14 @@ const CategoryImgSlide = ({title, url1, url2}) => {
                             />
                         </StInner>
                         <StBtnWrap>
-                            <StBtn1
+                            <StPrevBtn
                             onClick={()=>{
                                 PrevBtn();
-                            }}><FontAwesomeIcon icon={faAngleLeft} /></StBtn1>
-                            <StBtn2 
+                            }}><FontAwesomeIcon icon={faAngleLeft} /></StPrevBtn>
+                            <StNextBtn 
                             onClick={()=>{
                                 NextBtn();
-                            }}><FontAwesomeIcon icon={faAngleRight} /></StBtn2>
+                            }}><FontAwesomeIcon icon={faAngleRight} /></StNextBtn>
                         </StBtnWrap>
                     </StSlideWrapper>
                 </StSlideBox>
@@ -66,14 +66,16 @@ const CategoryImgSlide = ({title, url1, url2}) => {
                                 src={ImgList[count]}
                                 />
                             </StInner>
-                            <StBtn1 
-                            onClick={()=>{
-                                PrevBtn();
-                            }}><FontAwesomeIcon icon={faAngleLeft} /></StBtn1>
-                            <StBtn2 
-                            onClick={()=>{
-                                NextBtn();
-                            }}><FontAwesomeIcon icon={faAngleRight} /></StBtn2>
+                            <StBtnWrap>
+                                <StPrevBtn 
+                                onClick={()=>{
+                                    PrevBtn();
+                                }}><FontAwesomeIcon icon={faAngleLeft} /></StPrevBtn>
+                                <StNextBtn 
+                                onClick={()=>{
+                                    NextBtn();
+                                }}><FontAwesomeIcon icon={faAngleRight} /></StNextBtn>
+                            </StBtnWrap>
                         
                         </StSlideWrapper>
                     </StSlideBox>
@@ -89,7 +91,9 @@ const StSlideBox = Styled.div`
 `;
 
 const StSlideWrapper = Styled.div`   
-    width: 50vw;
+    width: 30vw;
+    margin-left: 20px;
+    position: relative;
 `;
 
 
@@ -109,30 +113,31 @@ const StImg = Styled.img`
 `;
 
 const StBtnWrap = Styled.div`
-    position: absolute;
-    positon: fixed;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     font-family: "text";
+    margin-top: 380px;
 `;
 
-const StBtn1 = Styled.div`
+const StPrevBtn = Styled.div`
     position: fixed;
     width: 100px;
-    height: 100px;
+    height: 100px;    
     font-family: "text";
-    font-size: 150px;  
+    font-size: 100px;  
     &:hover{    
     cursor: pointer;
     }
 `;
 
-const StBtn2 = Styled.div`
+const StNextBtn = Styled.div`
     position: fixed;
     width: 500px;
-    height: 100px;    
+    height: 100px;
+    margin-left: 540px;   
     font-family: "text";
-    font-size: 150px;
+    font-size: 100px;
     &:hover{    
     cursor: pointer;
 }
