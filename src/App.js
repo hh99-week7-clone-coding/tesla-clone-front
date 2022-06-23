@@ -6,7 +6,7 @@ import Home from "./pages/home";
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Shop from './pages/shop';
-import Category1 from './pages/Category1';
+import Category1 from './pages/category1';
 import Category2 from './pages/category2';
 import Category3 from './pages/category3';
 import Category4 from './pages/category4';
