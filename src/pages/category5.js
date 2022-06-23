@@ -77,7 +77,7 @@ const Category5 = () => {
                         navigate(`/shop/category/${item.categoryId}`)
                         }}
                         />
-                    ))}>
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -97,7 +97,7 @@ const Category5 = () => {
                         navigate(`/shop/category/${item.categoryId}`)
                         }}
                         />
-                    ))}>
+                    ))}
                 </StCardAlign>
             </StContainer>
         </Wrap>
