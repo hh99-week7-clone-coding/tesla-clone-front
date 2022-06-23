@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import Women from '../components/Category/Women';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { __loadBestSellor } from '../redux/modules/women';
 
 const Category7 = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const bestseller = useSelector(state => state.modelslist.bestseller);
+
+
+  console.log(bestseller);
+
+  const WomenID1 = "women.best-sellers";
+
+
+  useEffect(()=>{
+      dispatch(__loadBestSellor(WomenID1));
+
+  },[dispatch]);
 
     return (
         <> 
@@ -13,11 +31,19 @@ const Category7 = () => {
                     <StCardTitle>Best Sellers</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <Women
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/TOPS/HOODIES_SWEATSHIRTS/1740226-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/TOPS/HOODIES_SWEATSHIRTS/1740226-00-A_1.jpg"
-                        title="Women's Chill Half Zip Cropped Hoodie"
-                        cost="$85"/>
+                  {bestseller && 
+                      bestseller.map((item)=>(
+                      <Women
+                      key={item.itemId}
+                      url={item.imageUrl}
+                      ChangeUrl={item.imageOverUrl}
+                      title={item.itemName}
+                      cost={item.price}
+                      onClick={()=>{
+                      navigate(`/shop/category/${item.categoryId}`)
+                      }}
+                      />
+                    ))}
                 </StCardAlign>
             </StContainer>            
         </Wrap>

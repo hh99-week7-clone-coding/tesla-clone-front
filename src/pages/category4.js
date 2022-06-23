@@ -1,8 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import ModelX from '../components/Category/ModelX';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { __loadBestSellor, __loadInterior, __loadExterior } from '../redux/modules/modelx';
 
 const Category4 = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const bestseller = useSelector(state => state.modelslist.bestseller);
+    const interior = useSelector(state => state.modelslist.interior);
+    const exterior = useSelector(state => state.modelslist.exterior);
+
+    console.log(bestseller);
+    console.log(interior);
+    console.log(exterior);
+
+
+    const ModelXID1 = "model-x.best-sellers";
+    const ModelXID2 = "model-x.interior";
+    const ModelXID3 = "model-x.exterior";
+
+    useEffect(()=>{
+        dispatch(__loadBestSellor(ModelXID1));
+
+    },[dispatch]);
+
+
+    useEffect(()=>{
+        dispatch(__loadInterior(ModelXID2));
+    },[dispatch])
+
+
+
+    useEffect(()=>{
+        dispatch(__loadExterior(ModelXID3));
+    },[dispatch])
 
     return (
         <> 
@@ -13,11 +47,19 @@ const Category4 = () => {
                     <StCardTitle>Best Sellers</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <ModelX
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_1_2000.jpg"
-                        title="Model X All-Weather Interior Mats"
-                        cost="$120"/>
+                    {bestseller && 
+                        bestseller.map((item)=>(
+                        <ModelX
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -25,11 +67,19 @@ const Category4 = () => {
                     <StCardTitle>Interior</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <ModelX
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_1_2000.jpg"
-                        title="Model X All-Weather Interior Mats"
-                        cost="$120"/>
+                    {interior && 
+                        interior.map((item)=>(
+                        <ModelX
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -37,11 +87,19 @@ const Category4 = () => {
                     <StCardTitle>Exterior</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <ModelX
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_X/INTERIOR/1763873-00-A_1_2000.jpg"
-                        title="Model X All-Weather Interior Mats"
-                        cost="$120"/>
+                    {exterior && 
+                        exterior.map((item)=>(
+                        <ModelX
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
         </Wrap>

@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import Kids from '../components/Category/Kids';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { __loadBestSellor } from '../redux/modules/kids';
 
 const Category8 = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const bestseller = useSelector(state => state.modelslist.bestseller);
+
+
+  console.log(bestseller);
+
+  const KidsID1 = "kids.best-sellers";
+
+
+  useEffect(()=>{
+      dispatch(__loadBestSellor(KidsID1));
+
+  },[dispatch])
 
     return (
         <> 
@@ -13,11 +31,19 @@ const Category8 = () => {
                     <StCardTitle>Best Sellers</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <Kids
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/KIDS/TOPS/1742702-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/LIFESTYLE/KIDS/TOPS/1742702-00-A_1.jpg"
-                        title="Kids Cyberquad Bomber Jacket"
-                        cost="$65"/>
+                  {bestseller && 
+                      bestseller.map((item)=>(
+                      <Kids
+                      key={item.itemId}
+                      url={item.imageUrl}
+                      ChangeUrl={item.imageOverUrl}
+                      title={item.itemName}
+                      cost={item.price}
+                      onClick={()=>{
+                      navigate(`/shop/category/${item.categoryId}`)
+                      }}
+                      />
+                    ))}
                 </StCardAlign>
             </StContainer>
         </Wrap>

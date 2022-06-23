@@ -1,8 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styled from 'styled-components';
 import ModelY from '../components/Category/ModelY';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { __loadBestSellor, __loadInterior, __loadExterior } from '../redux/modules/modely';
+
 
 const Category5 = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const bestseller = useSelector(state => state.modelslist.bestseller);
+    const interior = useSelector(state => state.modelslist.interior);
+    const exterior = useSelector(state => state.modelslist.exterior);
+
+    console.log(bestseller);
+    console.log(interior);
+    console.log(exterior);
+
+
+    const ModelYID1 = "model-y.best-sellers";
+    const ModelYID2 = "model-y.interior";
+    const ModelYID3 = "model-y.exterior";
+
+    useEffect(()=>{
+        dispatch(__loadBestSellor(ModelYID1));
+
+    },[dispatch]);
+
+
+    useEffect(()=>{
+        dispatch(__loadInterior(ModelYID2));
+    },[dispatch])
+
+
+
+    useEffect(()=>{
+        dispatch(__loadExterior(ModelYID3));
+    },[dispatch])
 
     return (
         <> 
@@ -13,11 +48,19 @@ const Category5 = () => {
                     <StCardTitle>Best Sellers</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <ModelY
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_1.jpg"
-                        title="Model Y All-Weather Interior Liners"
-                        cost="$225"/>
+                    {bestseller && 
+                        bestseller.map((item)=>(
+                        <ModelY
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -25,11 +68,19 @@ const Category5 = () => {
                     <StCardTitle>Interior</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <ModelY
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_1.jpg"
-                        title="Model Y All-Weather Interior Liners"
-                        cost="$225"/>
+                    {interior && 
+                        interior.map((item)=>(
+                        <ModelY
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}>
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -37,11 +88,19 @@ const Category5 = () => {
                     <StCardTitle>Exterior</StCardTitle>
                 </StTitleWrap>
                 <StCardAlign>
-                    <ModelY
-                        url="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_0_2000.jpg"
-                        ChangeUrl="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1616599-00-A_1.jpg"
-                        title="Model Y All-Weather Interior Liners"
-                        cost="$225"/>
+                    {exterior && 
+                        exterior.map((item)=>(
+                        <ModelY
+                        key={item.itemId}
+                        url={item.imageUrl}
+                        ChangeUrl={item.imageOverUrl}
+                        title={item.itemName}
+                        cost={item.price}
+                        onClick={()=>{
+                        navigate(`/shop/category/${item.categoryId}`)
+                        }}
+                        />
+                    ))}>
                 </StCardAlign>
             </StContainer>
         </Wrap>
