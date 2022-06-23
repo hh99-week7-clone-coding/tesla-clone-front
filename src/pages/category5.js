@@ -14,9 +14,6 @@ const Category5 = () => {
     const interior = useSelector(state => state.modelslist.interior);
     const exterior = useSelector(state => state.modelslist.exterior);
 
-    console.log(bestseller);
-    console.log(interior);
-    console.log(exterior);
 
 
     const ModelYID1 = "model-y.best-sellers";
@@ -80,7 +77,7 @@ const Category5 = () => {
                         navigate(`/shop/category/${item.categoryId}`)
                         }}
                         />
-                    ))}>
+                    ))}
                 </StCardAlign>
             </StContainer>
             <StContainer>
@@ -100,7 +97,7 @@ const Category5 = () => {
                         navigate(`/shop/category/${item.categoryId}`)
                         }}
                         />
-                    ))}>
+                    ))}
                 </StCardAlign>
             </StContainer>
         </Wrap>
