@@ -1,3 +1,4 @@
+import { AstPath } from "prettier";
 import api from "./core/index";
 
 const apis = {
@@ -28,7 +29,8 @@ const apis = {
     getLifeDrink : (id) => api.get(`/api/shop/category/${id}`),
     getLifeOutDoor : (id) => api.get(`/api/shop/category/${id}`),
     getLifeGiftCard : (id) => api.get(`/api/shop/category/${id}`),
-    getShopDetail : (id) => api.get(`/api/shop/item/${id}`)
+    getShopDetail : (itemId) => api.get(`/api/shop/item/${itemId}`),
+    getShopDetailByName: (itemName) => api.get(`/api/shop/byName/${itemName}`)
 }
 
 export default apis;
