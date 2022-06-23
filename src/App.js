@@ -22,6 +22,7 @@ import ModelS from './pages/vehicleInfo/modelS';
 import Model3 from './pages/vehicleInfo/model3';
 import ModelX from './pages/vehicleInfo/modelX';
 import ModelY from './pages/vehicleInfo/modelY';
+import Compare from './pages/compare';
 // import react-query
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -52,6 +53,8 @@ function App() {
         <Route path = "/vehicle/info/model%20X" element={<ModelX/>}/>
         <Route path = "/vehicle/info/model%20Y" element={<ModelY/>}/>
         <Route path = "/shop/cart/:id" element={<Cart/>}/>
+        <Route path = "/vehicle/compare" element={<Compare/>}/>
+
       </Routes>
     </QueryClientProvider>
   );

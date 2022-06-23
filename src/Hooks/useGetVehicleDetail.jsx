@@ -4,9 +4,11 @@ import apis from '../api/main'
 
 export const useGetVehicleDetail = (vehicleId) => {
  const fetcher = async () => {
-    const { data } = await apis.getVehicleDetails(vehicleId);
+    if(vehicleId !== undefined){
+      const { data } = await apis.getVehicleDetails(vehicleId);
+      return data;
+    }
     
-    return data;
   };
 
   return useQuery(["vehicleDetail", vehicleId], fetcher)
