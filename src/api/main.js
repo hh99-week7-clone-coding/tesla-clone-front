@@ -1,7 +1,8 @@
 import api from "./core/index";
 
 const apis = {
-    getVehicleInfos : (id) => api.get(`/api/vehicle/${id}`),
+    getVehicleDetails : (vehicleId) => api.get(`/api/vehicle/${vehicleId}`),
+    getVehicleDetailsByName : (vehicleName) => api.get(`/api/vehicle/byName/${vehicleName}`),
     postUser : (data) => api.post('/api/user/signup', data),
     login : (data) => api.post('/api/user/login', data),
     getCategoryInfo : (id) => api.get(`/api/shop/category/${id}`),

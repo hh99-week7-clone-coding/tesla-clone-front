@@ -1,13 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeCookie, getCookie } from '../Cookie'
 import { menuOpen } from "../redux/modules/home";
+import { isLoginUser } from "../redux/modules/home";
 import styled from "styled-components";
 import "../App.css";
 
-const Header = () => {
+const Header = ({top}) => {
 
     const dispatch = useDispatch();
+
+    const token = getCookie("token");
+
+    useEffect(() => {
+        
+        if(token){
+            dispatch(isLoginUser(true))
+        } else {
+            dispatch(isLoginUser(false))
+        }
+    },[dispatch, token])
 
     const [hover, setHover] = useState(0);
     const [sideHover, setSideHover] = useState(0);
@@ -15,6 +28,7 @@ const Header = () => {
     const [sideOut, setSideOut] = useState(false);
 
     const isMenuOpened = useSelector(state => state.home.menuOpened)
+    const isLogin = useSelector(state => state.home.isLogin)
 
     const onHoverBtn = (event) => {
         setHover(event.target.id);
@@ -38,24 +52,28 @@ const Header = () => {
         dispatch(menuOpen())
     }
 
+    const logOutHandler = () => {
+        removeCookie("token");
+        dispatch(isLoginUser(false));
+        alert("SEE YOU AGAIN")
+    }
+
   return (
-    <StHeaderBox>
+    <StHeaderBox top={top}>
         <StLink to={'/'}><StLogo>TESLA</StLogo></StLink>
-        <StMenu>
-            <StMenuBox width="700px" minWidth="550px" onMouseLeave={onOut}>
-                <StMenuBtn id="5" onMouseEnter={onHoverBtn}>Model S</StMenuBtn>
-                <StMenuBtn id="120" onMouseEnter={onHoverBtn}>Model 3</StMenuBtn>
-                <StMenuBtn id="235" onMouseEnter={onHoverBtn}>Model X</StMenuBtn>
-                <StMenuBtn id="350" onMouseEnter={onHoverBtn}>Model Y</StMenuBtn>
-                <StMenuBtn id="465" onMouseEnter={onHoverBtn}>Solar Roof</StMenuBtn>
-                <StMenuBtn id="580" onMouseEnter={onHoverBtn}>Solar Panels</StMenuBtn>
-                <StMenuHover hover={hover} out={out} width="100px"/>
-            </StMenuBox>
-        </StMenu>
-        <StMenuBox width="15vw" minWidth="250px"  onMouseLeave={onSideOut}>
+        <StMenuBox width="30vw" minWidth="400px" onMouseLeave={onOut}>
+            <StMenuBtn id="5" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model%20S'}>Model S</StLink></StMenuBtn>
+            <StMenuBtn id="115" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model%203'}>Model 3</StLink></StMenuBtn>
+            <StMenuBtn id="230" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model%20X'}>Model X</StLink></StMenuBtn>
+            <StMenuBtn id="340" onMouseEnter={onHoverBtn}><StLink to={'/vehicle/info/model%20Y'}>Model Y</StLink></StMenuBtn>
+            <StMenuBtn id="455" onMouseEnter={onHoverBtn}>About Us</StMenuBtn>
+            <StMenuHover hover={hover} out={out} width="100px"/>
+        </StMenuBox>
+        <StMenuBox width="13vw" minWidth="250px"  onMouseLeave={onSideOut}>
             <StMenuBtn id="0" onMouseEnter={onSideHoverBtn}><StLink to={'/shop'}>Shop</StLink></StMenuBtn>
-            <StMenuBtn id="90" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>
-            <StMenuBtn id="180" onMouseEnter={onSideHoverBtn} onClick={onMenuOpen}>Menu</StMenuBtn>
+            { isLogin ? (<StMenuBtn id="110" onMouseEnter={onSideHoverBtn} onClick={logOutHandler}>LogOut</StMenuBtn>) :
+            (<StMenuBtn id="110" onMouseEnter={onSideHoverBtn}><StLink to={'/login'}>Account</StLink></StMenuBtn>)}
+            <StMenuBtn id="220" onMouseEnter={onSideHoverBtn} onClick={onMenuOpen}>Menu</StMenuBtn>
             <StMenuHover hover={sideHover} out={sideOut} width="calc(100% / 4)"/>
         </StMenuBox>
         <StSideMenu onClick={onMenuOpen}>Menu</StSideMenu>
@@ -69,8 +87,11 @@ export const StLink = styled(Link)`
 `;
 
 const StHeaderBox = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: fixed;
-    top: 60px;
+    top: ${props => props.top};
     left: 0;
     display: flex;
     align-items: center;
@@ -89,14 +110,6 @@ export const StLogo = styled.h1`
     &:hover{
         cursor: pointer;
     }
-
-`;
-
-const StMenu = styled.div`
-    display: flex;
-    justify-content: center;
-    width: 80vw;
-    height: 60px;
 `;
 
 const StMenuBox = styled.div`
@@ -107,6 +120,7 @@ const StMenuBox = styled.div`
     width: ${props => props.width};
     min-width: ${props => props.minWidth};
     height: 60px;
+    z-index: 100;
     @media only screen and (max-width: 1200px) {
         display: none;
     }
@@ -121,7 +135,7 @@ const StMenuBtn = styled.div`
     font-family: "text";
     font-size: 14px;
     font-weight: bold;
-    z-index: 10;
+    z-index: 100;
     &:hover{
         cursor: pointer;
     }
@@ -166,6 +180,4 @@ const StSideMenu = styled.div`
         cursor: pointer;
     }
 `;
-
-
 export default Header;

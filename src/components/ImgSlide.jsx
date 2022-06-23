@@ -3,18 +3,13 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-// import image
-import model3_1 from "../image/detail/model3/detail-model3-1.jfif";
-import model3_2 from "../image/detail/model3/detail-model3-2.jfif";
-import model3_3 from "../image/detail/model3/detail-model3-3.jfif";
-import model3_4 from "../image/detail/model3/detail-model3-4.jfif"
 
-const ImgSlide = () => {
+const ImgSlide = ({image1Url, image2Url}) => {
 
-    const Img1 = model3_1
-    const Img2 = model3_2
-    const Img3 = model3_3
-    const Img4 = model3_4
+    const vehicle1_img1 = image1Url?.split(',,')[0]
+    const vehicle1_img2 = image1Url?.split(',,')[1]
+    const vehicle2_img1 = image2Url?.split(',,')[0]
+    const vehicle2_img2 = image2Url?.split(',,')[1]
 
     const [imgNum, setImgNum] = useState(0);
 
@@ -38,7 +33,7 @@ const ImgSlide = () => {
         return (
             <>
                 <StLeftArrow onClick={onClickLeftArrow}><FontAwesomeIcon icon={faArrowLeft}/></StLeftArrow>
-                <StImgBox img={Img1}/>
+                <StImgBox img={vehicle1_img1}/>
                 <StRightArrow onClick={onClickRightArrow}><FontAwesomeIcon icon={faArrowRight}/></StRightArrow>
             </>   
         )}
@@ -46,7 +41,7 @@ const ImgSlide = () => {
         return (
             <>
                 <StLeftArrow onClick={onClickLeftArrow}><FontAwesomeIcon icon={faArrowLeft}/></StLeftArrow>
-                <StImgBox img={Img2}/>
+                <StImgBox img={vehicle1_img2}/>
                 <StRightArrow onClick={onClickRightArrow}><FontAwesomeIcon icon={faArrowRight}/></StRightArrow>
             </>   
           )
@@ -55,7 +50,7 @@ const ImgSlide = () => {
         return (
             <>
                 <StLeftArrow onClick={onClickLeftArrow}><FontAwesomeIcon icon={faArrowLeft}/></StLeftArrow>
-                <StImgBox img={Img3}/>
+                <StImgBox img={vehicle2_img1}/>
                 <StRightArrow onClick={onClickRightArrow}><FontAwesomeIcon icon={faArrowRight}/></StRightArrow>
             </>
         )
@@ -64,7 +59,7 @@ const ImgSlide = () => {
         return (
             <>
                 <StLeftArrow onClick={onClickLeftArrow}><FontAwesomeIcon icon={faArrowLeft}/></StLeftArrow>
-                <StImgBox img={Img4}/>
+                <StImgBox img={vehicle2_img2}/>
                 <StRightArrow onClick={onClickRightArrow}><FontAwesomeIcon icon={faArrowRight}/></StRightArrow>
             </>
         )
