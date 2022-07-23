@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# Tesla Clone Coding
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 개요
 
-## Available Scripts
+### 1. 프로젝트 소개
+'Tesla' 웹사이트를 클론코딩해보는 프로젝트입니다.
+<br><br>
 
-In the project directory, you can run:
+### 2. 프로젝트 목적
+- 'Tesla' 웹사이트를 클론코딩해보며, 그동안 공부했던 것들을 복습하기 위해 진행하였습니다.
+<br><br>
 
-### `yarn start`
+### 3. 🛠 Tech Skills
+- Front-end
+    - 개발언어 : JavaScript
+    - React, Redux, Redux-middleware(Redux-thunk), React-query, styled-component
+- Back-end
+    - 개발언어 : Java
+    - Spring boot, Spring securuty, MySQL
+- 공통
+    - 형상관리 : Git
+    - 협업 툴 : Github, Notion, Slack
+    - 디자인 공유 : Figma
+<br><br>
+### 4. 👨‍👩‍👧‍👧 프로젝트 멤버 : TEAM No Sleep
+- Front-end : 김근영, 이윤진
+- Back-end : 조한울, 장현석, 주희
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+----
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 프로젝트 상세
 
-### `yarn test`
+### Sign Up
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![signup](https://user-images.githubusercontent.com/97326130/180596767-cb4a2090-65b6-4d0c-a5e9-1023e7ea9533.gif)
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 회원가입 페이지입니다.
+- 사용자가 정보를 입력함과 동시에 유효성 검사를 진행합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 2. Log In
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![login](https://user-images.githubusercontent.com/97326130/180596799-3cd7ecf0-4d11-4af2-b06f-40cf41bf236e.png)
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 로그인 페이지입니다.
+- 가입한 이메일 주소와 비밀번호를 입력하여 로그인합니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 3. Home
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/97326130/180596713-f1e50c0d-ee67-4fda-9fb2-c9bc0fce30ec.gif)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 메인 페이지입니다.
+- 테슬라의 주요 차 모델이 소개되는 페이지입니다. 중앙 버튼을 누르면 해당 모델의 상세페이지로 이동합니다.
+- React-intersection-observer를 사용하여 스크롤 애니메이션을 구현하였습니다.
+- 바닐라 Javascript로 메뉴바 애니메이션을 구현하였습니다.
 
-## Learn More
+#### 4. Detail
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![detail](https://user-images.githubusercontent.com/97326130/180597000-b7fc6a6a-4918-44c9-8749-798bbcee849a.gif)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+- 차량 모델 상세 소개 페이지입니다.
+- 각 섹션을 컴포넌트로 나누어 재사용하여 개발 소요 시간을 최소화하였습니다.
+- 하단 버튼을 클릭하면 차량 구매 페이지로 이동합니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### 5. 차량 구매 페이지
 
-### Analyzing the Bundle Size
+![구매](https://user-images.githubusercontent.com/97326130/180597047-f024ac90-4d69-4b6e-8a38-54380945f559.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+- 차량 구매 페이지입니다.
+- 바닐라 Javascript로 이미지 슬라이드와 모달을 구현하였습니다.
+- 우측 조건을 클릭하면 조건에 맞는 차량 금액을 나타냅니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### 6. 차량 비교 페이지
 
-### Advanced Configuration
+![compare](https://user-images.githubusercontent.com/97326130/180597131-e08a15fa-f1e7-4869-b51f-b44e86ca307d.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+- select box에서 차량을 선택하면, 해당 차량의 정보를 나타냅니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### 7. shop 메인페이지
 
-### `yarn build` fails to minify
+![shophome](https://user-images.githubusercontent.com/97326130/180597182-894ce2d6-2569-4902-85c7-160a18d092b1.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- shop 메인페이지입니다.
+- 바닐라 Javascript를 이용하여 이미지 슬라이드를 구현하였습니다.
+
+----
+
+### Repository
+- [Team repository](https://github.com/hh99-week7-clone-coding)
+- [Front-end Repository](https://github.com/hh99-week7-clone-coding/tesla-clone-front)
+- [Back-end Repository](https://github.com/hh99-week7-clone-coding/backend)
